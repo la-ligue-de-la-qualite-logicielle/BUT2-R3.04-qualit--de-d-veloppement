@@ -978,12 +978,12 @@
                 >. Il faut savoir faire des compromis et contracter
                 intentionnellement de la dette. Idéalement il faut une trace de
                 cette dette contractée et un plan pour la rembourser. Cela
-                demande de l'expérience.
+                demande de l'expérience et de la discipline, et un peu d'outils.
               </li>
               <li>
                 Le code est vivant : le refactoring est une pratique
                 d'amélioration continue qui permet de viser la qualité.
-                D'ailleurs on dit que le code qui est rarement édité "pourri".
+                D'ailleurs on dit que le code qui est rarement édité "pourrit".
               </li>
             </ul>
           </section>
@@ -1037,9 +1037,9 @@
             </blockquote>
             <p class="fragment fade-up">OK... Ne fuyez pas !</p>
             <blockquote class="fragment fade-up r-fit-text">
-              En Functional Programming (FP), on réalise des applications avec
-              des fonctions réalisent des opérations qui ne produisent
-              <strong>pas d'effet secondaire (ou side effect)</strong>.
+              En Functional Programming (FP), les fonctions réalisent des
+              opérations qui ne produisent
+              <strong>pas d'effets secondaires (ou side effects)</strong>.
             </blockquote>
           </section>
           <section data-background-color="black">
@@ -1924,57 +1924,467 @@
               <li>Structuraux</li>
               <li>Comportementaux</li>
             </ul>
+            <aside class="notes">
+              Les design patterns, ou patrons de conception en français, sont des
+              solutions réutilisables à des problèmes de conception récurrents.
+              Dès 1977 Christopher Alexander a publié un essai intitulé "A Pattern Language: Towns, Buildings, Construction".
+              C'est ensuite en 1994 que les design patterns ont été popularisés par le livre
+              <a href="http://www.javier8a.com/itc/bd1/articulo.pdf"></a>Design Patterns: Elements of Reusable Object Oriented Software</a>.
+              Ses 4 auteurs ont été surnommés le "Gang of Four"
+              (Erich Gamma, Richard Helm, Ralph Johnson et John Vlissides).
+              Ils ont beaucoup contribué à la programmation orientée objet et à la mise en place
+              des pratiques de tests unitaires. Ils décrivent ainsi 23 design patterns répartis dans 3 catégories.
+            </aside>
           </section>
           <section data-background-color="black">
-            <h2>1. Designs Patterns Créationels</h2>
-            <p>TBD</p>
+            <h2 style="margin-bottom: 0">Patterns Créationels</h2>
+            <p style="margin-top: 0" class="r-fit-text">
+              Fournissent des moyens pratiques de créer des objets
+            </p>
+            <ul class="r-fit-text">
+              <li>Singleton : à éviter le plus souvent, cf SOLID/STUPID</li>
+              <li>Prototype : revient très souvent à implémenter clone</li>
+              <li><strong>Factory</strong></li>
+              <li><strong>Builder</strong></li>
+            </ul>
+            <aside class="notes">On va passer en revue Factory et Builder à travers des exemples concrets</aside>
           </section>
           <section data-background-color="black">
-            <h2>Le Design Pattern Factory Method</h2>
-            <p>TBD</p>
+            <h2>Factory</h2>
+            <p class="r-fit-text">
+              On crée une classe dont la seule responsabilité est de fabriquer des classes se conformant à une interface.
+              Exemple : <a href="https://github.com/symfony/symfony/blob/991c2bad292c4c4af17328c331507a5a7789512c/src/Symfony/Component/Lock/LockFactory.php">Symfony LockFactory</a>
+            </p>
+            <aside class="notes"></aside>
           </section>
           <section data-background-color="black">
-            <h2>Le Design Pattern Prototype</h2>
-            <p>TBD</p>
+            <h2>Builder</h2>
+            <p class="r-fit-text">Permet de créer un objet ou une structure d'objet par l'intermédiaire d'une classe qui
+              va construire l'objet étape par étape. Exemple : <a href="https://github.com/symfony/symfony/blob/991c2bad292c4c4af17328c331507a5a7789512c/src/Symfony/Component/Workflow/DefinitionBuilder.php#L23-L43">Symfony Workflow DefinitionBuilder</a>
+            </p>
+            <aside class="notes">
+              Très pratique car on peut décrire la création du/des objets à la manière d'une recette de cuisine,
+              puis ensuite on peut l'exécuter, c'est prêt !
+            </aside>
           </section>
           <section data-background-color="black">
-            <h2>Le Design Pattern Builder</h2>
-            <p>TBD</p>
+            <h2 style="margin-bottom: 0">Patterns Structuraux</h2>
+            <p style="margin-top: 0" class="r-fit-text">
+              Permettent d'assembler des objets dans des structures plus larges tout en conservant une structuration flexible et efficace.
+            </p>
+            <ul class="r-fit-text">
+              <li><strong>Adapter</strong> : permet à des objets aux interfaces incompatibles de collaborer</li>
+              <li><strong>Bridge</strong> : permet de découpler une abstraction de son implémentation afin que les deux puissent varier indépendamment</li>
+              <li><strong>Composite</strong> : permet de composer des objets dans des structures et travailler sur les structures comme s'il s'agissait d'objets individuels</li>
+            </ul>
           </section>
           <section data-background-color="black">
-            <h2>Le Design Pattern Singleton</h2>
-            <p>TBD</p>
+            <h2 style="margin-bottom: 0">Patterns Structuraux</h2>
+            <ul class="r-fit-text">
+              <li><strong>Decorator</strong> : permet d'attacher dynamiquement de nouvelles responsabilités à un objet existant sans le modifier et sans héritage, par composition</li>
+              <li><strong>Proxy</strong> : permet de fournir un objet se substituant à un autre et de de réaliser certaines opérations autour du cycle de vie de l'objet d'origine</li>
+              <li><strong>Façade</strong> : permet de fournir une interface simplifiée à un ensemble de classes complexes</li>
+              <li><strong>Flyweight</strong> : permet de gérer de manière efficiente de grands ensembles d'objets</li>
+            </ul>
           </section>
           <section data-background-color="black">
-            <h2>2. Designs Patterns Structuraux</h2>
-            <p>TBD</p>
+            <h2>Design Pattern Adapter</h2>
+            <pre data-id="code-animation">
+							<code class="hljs" data-trim data-line-numbers="3-10|12-16|19-32">
+              &lt;?php
+
+              // Une interface qu'on veut adapter en Notification
+              interface SlackApi {
+                  public function login(string $token);
+                  public function sendMessage(
+                    string $channel,
+                    string $message,
+                  );
+              }
+
+              // Notre interface de notification
+              interface Notification
+              {
+                  public function send(string $title, string $message);
+              }
+
+
+              // Notre adapter
+              final readonly class SlackNotification implements Notification
+              {
+                  public function __construct(
+                    private SlackApi $slack,
+                    private string $token,
+                  ) {}
+
+                  public function send(string $title, string $message)
+                  {
+                      $this->slack->login($this->token);
+                      $this->slack->sendMessage('#general', $title.': '.$message);
+                  }
+              }
+							</code>
+            </pre>
+            <aside class="notes">
+            On voit qu'on a réussi à adapter l'interface de SlackApi
+            - sûrement fournie par une dépendance externe qu'on ne peut pas changer -
+            à notre interface de Notification. On pourrait créer un autre adapter pour une autre
+            API de notification concrète (Email : MailgunEmail, SMS : TwilioSMS, etc.)
+          </aside>
           </section>
           <section data-background-color="black">
-            <h2>Le Design Pattern Adapter</h2>
-            <p>TBD</p>
+            <h2>Bridge</h2>
+            <p class="r-fit-text">
+              Dès que l'on souhaite faire varier une abstraction en fonction de sa dépendance, on peut utiliser le Bridge.
+              Par exemple <a href="https://refactoring.guru/design-patterns/bridge/php/example#example-1">comment rendre une même structure de données dans différent formats</a>
+            </p>
+            <aside class="notes">
+            À utiliser par exemple lorsqu'on souhaite :
+            <ul>
+              <li>Varianter des fonctionnalités d'une classe (ex: compatibilité avec plusieurs bases de données/format)</li>
+              <li>Étendre une classe selon des dimensions orthogonales (ex: couleur, forme d'une classe produit, on crée alors des sous classes responsables de chaque dimension, le produit délégue alors les responsabilités)</li>
+              <li>Pouvoir intervertir des implémentation au runtime</li>
+            </ul>
+            </aside>
           </section>
           <section data-background-color="black">
-            <h2>Le Design Pattern Composite</h2>
-            <p>TBD</p>
+            <h2>Composite</h2>
+            <p class="r-fit-text">Dès que l'on a une structure d'objets de type arbre, il es courant de l'utiliser pour se faciliter la vie.
+              Par exemple <a href="https://refactoring.guru/design-patterns/composite/php/example#example-1">comment créer le rendu d'un formulaire HTML</a>
+            </p>
+            <aside class="notes">
+              À utiliser par exemple qu'on souhaite :
+              <ul>
+                <li>Gérer uniformément une structure de type arbre, grâce à l'interface commune, à base de contenant et d'enfants.</li>
+                <li>Gérer uniformément des éléments simples et complexes, car grâce à l'interface pas besoin de se soucier de la classe concrète des éléments manipulés et de leur complexité</li>
+              </ul>
+            </aside>
           </section>
           <section data-background-color="black">
-            <h2>Le Design Pattern Decorator</h2>
-            <p>TBD</p>
+            <h2>Decorator</h2>
+            <pre data-id="code-animation">
+							<code class="hljs" data-trim data-line-numbers="3-6|8-16|18-27|29-34">
+          &lt;?php
+
+          // Notre interface de chargement de blob
+          interface BlobLoader {
+              public function load(string $blob): string;
+          }
+
+          final class FileToBlobLoader implements BlobLoader {
+              public __construct(private BlobLoader $loader) {}
+
+              public function load(string $fileName): string {
+                  $content = file_get_contents($fileName);
+
+                  return $this->loader->load($content);
+              }
+          }
+
+          // Décorateur gérant la compression du fichier
+          final class CompressedBlobLoader implements BlobLoader {
+              public function load(string $content): string {
+                  if (substr($content, 0, 2) !== 'gz') {
+                      return $content;
+                  }
+
+                  return gzdecode($content);
+              }
+          }
+
+          // On peut maintenant charger un fichier compressé
+          // sans héritage, par composition
+          $loader = new FileToBlobLoader(
+            new CompressedBlobLoader()
+          );
+          $loader->load('file.txt');
+							</code>
+            </pre>
+            <aside class="notes">
+            </aside>
           </section>
           <section data-background-color="black">
-            <h2>3. Designs Patterns Comportementaux</h2>
+            <h2>Proxy</h2>
+            <pre data-id="code-animation">
+							<code class="hljs" data-trim data-line-numbers="3-5|7-13|15-29">
+          &lt;?php
+
+          interface HttpClient {
+              public function get(string $url): string;
+          }
+
+          final readonly class SomeApiClient implements HttpClient {
+              public function __construct(private HttpClient $client) {}
+
+              public function get(string $url): string {
+                  return $this->client->get($url);
+              }
+          }
+
+          final readonly class LogTimeOfApiClientProxy implements HttpClient {
+              public function __construct(
+                private SomeApiClient $client,
+                private LoggerInterface $logger,
+              ) {}
+
+              public function get(string $url): string {
+                  $start = microtime(true);
+                  $response = $this->client->getSomeData();
+                  $end = microtime(true);
+                  $this->logger->info('Call took ' . ($end - $start) . ' seconds');
+
+                  return $response;
+              }
+          }
+							</code>
+            </pre>
+            <aside class="notes">
+              Très proche dans le principe de l'adapter, mais on ne change pas l'interface de la classe cible, on la cache.
+            </aside>
           </section>
           <section data-background-color="black">
-            <h2>Le Design Pattern Observer ou Event Dispatcher</h2>
-            <p>TBD</p>
+            <h2>Facade</h2>
+            <p class="r-fit-text">
+              On viole intentionnellement des principes SOLID avec la façade dans un but de simplification, pour exposer simplemnt un sous système complexe.
+              Par exemple, <a href="https://refactoring.guru/design-patterns/facade/php/example#example-1">Comment simplifier l'usage d'une API : télécharger une vidéo Youtube</a>
+            </p>
+            <aside class="notes">
+              Contrairement à l'adapter qui encapsule une classe, la façade encapsule une API,
+              un ensemble de classes, dans le but de simplifier l'usage de cette API et fournir une interface simple.
+
+              Le seul défaut de la façade est qu'elle peut devenir un "god object" car elle oriente des implémentations concrètes et effectue des appels sur plusieus classes instanciées.
+            </aside>
           </section>
           <section data-background-color="black">
-            <h2>Le Design Pattern Strategy</h2>
-            <p>TBD</p>
+            <h2>Flyweight</h2>
+            <p class="r-fit-text">
+              Lorsque l'on a besoin d'optimiser/mutualiser des ressources en mémoire, très proche des principes
+              de mémoization qu'on trouve en programmation foncionnelle, ici adapté à la programmation objet.
+              <a href="https://refactoring.guru/design-patterns/flyweight">Pour aller plus loin</a>
+            </p>
+            <aside class="notes">
+            </aside>
           </section>
           <section data-background-color="black">
-            <h2>Le Design Pattern State</h2>
-            <p>TBD</p>
+            <h2 style="margin-bottom: 0">Patterns Comportementaux</h2>
+            <p style="margin-top: 0" class="r-fit-text">
+              Utilisés dans les algorithmes et la répartition des responsabilités entre objets.
+            </p>
+            <ul class="r-fit-text">
+              <li><strong>Chain of Responsibility</strong> : permet de passer un objet à une chaîne d'objets jusqu'à ce qu'il soit traité par un objet de cette chaîne</li>
+              <li><strong>Command</strong> : encapsule une demande dans un objet, permettant de décider comment traiter ou annuler cette demande</li>
+              <li><strong>Iterator</strong> : permet de parcourir séquentiellement une aggrégation d'objets sans avoir à exposer leur représentation</li>
+              <li><strong>Mediator</strong> : définit un objet qui encapsule comment un ensemble d'objet interragissent</li>
+              <li><strong>Memento</strong> : capture et externalise l'état d'un objet dans le but de le restaurer, sans violer l'encapsulation</li>
+            </ul>
+          </section>
+          <section data-background-color="black">
+            <h2 style="margin-bottom: 0">Patterns Comportementaux</h2>
+            <ul class="r-fit-text">
+              <li><strong>Observer</strong> : mécanisme d'abonnement pour notifier de multiples objets de tout événement se produisant sur un objet observé</li>
+              <li><strong>State</strong> : permet à un objet d'altérer son comportement lorsque son état interne change</li>
+              <li><strong>Strategy</strong> : permet de définir un ensemble d'algorithmes dans des classes distinctes et interchangeables</li>
+              <li><strong>Template Method</strong> : définit le skelette d'un algorithme tout en laissant les sous classes surcharger des étapes spécifiques sans en changer la structure</li>
+              <li><strong>Visitor</strong> : permet de cibler des algorithmes en fonction des objets parcourus</li>
+            </ul>
+          </section>
+          <section data-background-color="black">
+            <h2>Chain Of Responsibility</h2>
+            <p class="r-fit-text">Ce patron permet de chaîner un traitement à travers une liste de gestionnaires (handlers) :
+              chaque handler s'il <strong>ne peut pas traiter</strong> l'objet passé transmet au handler suivant.
+            </p>
+            <p class="r-fit-text">
+              À l'opposé, vous rencontrerez assez souvent le <a href="https://refactoring.guru/design-patterns/chain-of-responsibility/php/example#example-1">concept de middleware</a> qui passe le traitement
+              au suivant tant qu'il évalue que l'application <strong>pourra traiter</strong> la demande.
+            </p>
+            <aside class="notes">
+              En php <a href="https://www.php-fig.org/psr/psr-15/">PSR-15</a> est un bon exemple de middleware, qu'on peut considérer comme une chain-of-responsibility.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2>Command</h2>
+            <p class="r-fit-text">Ce patron sous sa forme historique dans le livre du gang of four consiste à avoir :</p>
+            <ul class="r-fit-text">
+              <li>1 classe de commande qui <strong>encapsule les données d'une requête à traiter</strong></li>
+              <li>1 <strong>méthode execute</strong> dans la classe de commande qui permet que la commande puisse s'éxécuter</li>
+              <li>En bonus, méthodes et/ou propriétés pour reporter le statut d'exécution</li>
+            </ul>
+            <aside class="notes">
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2>Command</h2>
+            <p class="r-fit-text">Concept devenu plus propre avec CQS/CQRS :</p>
+            <ul class="r-fit-text">
+              <li>1 classe de commande qui encapsule les données d'une requête à traiter</li>
+              <li>1 classe de gestionnaire (command handler) exécute la commande</li>
+              <li>Les deux classes étant reliées par un service (command bus)</li>
+            </ul>
+            <aside class="notes">
+
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2>Digression <a href="https://martinfowler.com/bliki/CQRS.html">CQS/CQRS</a></h2>
+            <image style="height: 60vh" src="./images/cqs.png" />
+            <aside class="notes">
+              <p class="r-fit-text">
+              CQS comme <strong>C</strong>ommand <strong>Q</strong>uery <strong>S</strong>eparation et
+              CQRS <strong>C</strong>ommand <strong>Q</strong>uery <strong>R</strong>esponsibility <strong>S</strong>egregation.
+              </p>
+              <p class="r-fit-text">
+              C'est un peu une mise à l'échelle du principe SRP : on considère que les lectures et les écritures dans une
+              application sont des cas d'usages différents. On peut donc séparer les commandes (écritures) des requêtes (lectures).
+              </p>
+              <p class="r-fit-text">
+              Cette considération se vérifie car dans une application très souvent les écritures sont plus rares que les lectures.
+              Pour vous donner un ordrer d'idée on a très souvent une répartition avec 10% d'écritures et 90% de lectures.
+              </p>
+              <p class="r-fit-text">
+              Si vous utilisez un framework tel que Symfony avec le composant messenger,
+              <a href="https://symfony.com/doc/current/messenger.html#multiple-buses-command-event-buses">tout est documenté pour mettre en place facilement au moins CQS.</a>
+              Vous retrouvez dans d'autres langages tels que Java avec <a href="https://developer.axoniq.io/axon-framework/overview">Axon Framework associé à Spring Boot</a>.
+              </p>
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2>Iterator</h2>
+            <p class="r-fit-text">Permet simplement d'extraire la logique de parcours d'une liste ou d'une structure dans une classe dédiée.</p>
+            <p class="r-fit-text">En php et dans beaucoup de langages des interfaces sont déjà proposées pour vous guider, telles que
+              <a href="https://www.php.net/manual/fr/class.iterator.php">Iterator</a>, ou
+              <a href="https://www.php.net/manual/fr/class.iteratoraggregate.php">IteratorAggregate</a>
+            </p>
+            <aside class="notes">
+              La classe d'iterator est agnostique de ce qu'elle manipule, elle sait juste comment parcourir la structure (SRP for the win).
+              <a href="https://refactoring.guru/design-patterns/iterator/php/example#example-1">Un exemple de parcours d'un fichier CSV sur code guru</a>.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2>Mediator</h2>
+            <p class="r-fit-text">Le médiateur est une sorte de <strong>chef d'orchestre entre plusieurs services</strong> afin de rendre plus claire la manière dont ils s'articulent.</p>
+            <p class="r-fit-text">
+              Un très bon exemple est <a href="https://refactoring.guru/design-patterns/mediator/php/example#example-1">la réalisation d'un event dispatcher</a>.
+              Très souvent des librairies/framework vous fournissent déjà des composants réutilisables reposants sur le design pattern de mediator.
+            </p>
+            <aside class="notes">
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2>Memento</h2>
+            <p class="r-fit-text">
+              Dans beaucoup de langages, le meilleur moyen de le mettre en place est d'utiliser la sérialisation/désérialisation.
+              Elle permet de sauvegarder l'état d'un objet et de le restaurer à tout moment.
+              On évitee de violer OCP en mettant inutilement des getters et setters sur les propriétés de vos objets.
+            </p>
+            <p class="r-fit-text">
+              C'est un bon moyen de mettre en place un undo/redo dans une application par exemple, en sauvegardant les états successifs
+              de l'application (historique) et en étant donc capable de restaurer par rapport à un état précis.
+            </p>
+            <aside class="notes">
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2>Observer</h2>
+            <p class="r-fit-text">
+              Nous avons déjà vu un exemple d'Observer avec l'event dispatcher dans le pattern du mediator.
+              Il s'agit simplement de notifier plusieurs objets (Subscribers) d'événements survenant dans notre application.
+            </p>
+            <p class="r-fit-text">
+              C'est un bon moyen au sein d'une application de séparer les responsabilités et de rendre plus
+              claire la manière dont les objets s'articulent. En effet on peut facilement découpler, mettre des frontières entre des concepts différents.
+              Et donc avec une bonne pratique, éviter l'effet spaghetti dans notre code.
+              <a href="https://refactoring.guru/design-patterns/observer/php/example#example-1">Un exemple d'observer sur code guru</a>
+            </p>
+            <aside class="notes">
+              Pour aller plus loin : certaines architectures d'applications reposent sur l'event sourcing,
+              qui consiste à stocker l'historique des événements permettant de restaurer l'état d'une application à tout moment.
+              Quand on y pense, c'est assez séduisant car nous avons tendance à toujours vouloir stocker des états dans la base de données.
+              Un état est une représentation d'un moment donné, et si on peut stocker l'historique des événements, on peut restaurer l'état à tout moment.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2>State</h2>
+            <p class="r-fit-text">
+              À utiliser seulement quand vous avez besoin de gérer un grand nombre d'états différents dans une classe et que vous
+              souhaitez déléguer la gestion de ces états à une autre classe.
+            </p>
+            <p class="r-fit-text">
+              Un bon exemple est la gestion des états d'une commande dans un système de paiement, ou encore un flux de publication
+              d'articles (draft, reviewing, published, archived, etc.).
+              Le composant <a href="https://symfony.com/doc/current/components/workflow.html">Workflow de Symfony</a> est un bon exemple d'implémentation de ce pattern.
+            </p>
+            <aside class="notes">
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2>Strategy</h2>
+            <p class="r-fit-text">
+              À utiliser quand vous devez mettre en place un algorithme dans des contextes différents.
+              Par exemple de la plannification de trajet (l'algorithme) appliqué à un véhicule (contexte).
+              Ce contexte va varier selon le véhicule, et donc l'algorithme de plannification de trajet va varier selon le véhicule.
+            </p>
+            <p class="r-fit-text">
+              Vous crééz donc une interface de stratégie commune à toutes les variantes de l'algorithme, et vous pouvez ainsi implémenter
+              les algorithmes dans des classes différentes, et les passer en paramètre à votre contexte.
+              <a href="https://refactoring.guru/design-patterns/strategy/php/example#example-0">Un exemple de stratégies de tri ou filtrage.</a>
+            </p>
+            <aside class="notes">
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2>Template Method</h2>
+            <p class="r-fit-text">
+              Le but est d'abstraire les étapes de traitement d'un algorithme qu'on peut dériver.
+              On fournit ainsi un cadre réutilisable pour créer des variantes.
+            </p>
+            <p class="r-fit-text">
+              Au minimum on a une classe abstraite qui définit les étapes de l'algorithme, et des classes concrètes qui vont implémenter.
+              On peut même aller jusqu'à fournir quelques implémentations concrètes de base.
+              <a href="https://refactoring.guru/design-patterns/template-method/php/example#example-0">Un exemple de template method sur code guru</a>
+            </p>
+            <p class="r-fit-text">
+              À l'inverse de Strategy, Template Method repose sur l'héritage, et non sur la composition, ce qui est moins flexible en général.
+            </p>
+            <aside class="notes">
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2>Visitor</h2>
+            <p class="r-fit-text">
+              Pattern très puissant qui permet d'ajouter de nouveaux comportements sur une hiérarchie de classe sans modifier les classes elles-mêmes.
+              Quand on parle de comportements, il vaut mieux qu'ils soient suffisamment éloignés de la logique métier de ces classes car sinon on risque
+              de vite overengineerer notre code.
+            </p>
+            <p class="r-fit-text">
+              Totalement SRP et OCP compliant. Les seules limites c'est qu'il faut étendre le visiteur lorsque la hiérarchie de classe change et qu'il faut
+              qu'il aient accès aux informations nécessaires de la hiérarchie de classe.
+            </p>
+            <p class="r-fit-text">
+              Par exemple, on peut imaginer un visiteur capable de produire un rapport sur les objets visités.
+              <a href="https://refactoring.guru/design-patterns/visitor/php/example#example-0">Un exemple sur code guru</a>
+            </p>
+            <aside class="notes">
+            </aside>
+          </section>
+          <section
+            data-background-color="black"
+          >
+            <h2 style="margin-bottom: 0">Design patterns</h2>
+            <h3>Ce qu'il faut retenir</h3>
+            <ul class="r-fit-text">
+              <li>
+                <strong>Ne pas utiliser de design pattern pour le fun</strong>.
+                Il faut toujours garder à l'esprit que le but est de produire du code lisible, maintenable et évolutif.
+                l'over engineering est autant votre ennemi que le code spaghetti.
+              </li>
+              <li>
+                Bien choisir les patterns à utiliser. Il y en a beaucoup, et il faut savoir les utiliser au bon moment.
+              </li>
+              <li>
+                Plutôt que de les réimplémenter, utilisez ceux qui sont déjà disponibles dans votre framework,
+                qui sont souvent été testés et maintenus et donc d'excellente qualité.
+              </li>
+            </ul>
           </section>
         </section>
         <section>
@@ -1984,9 +2394,262 @@
             style="backdrop-filter: blur(4px); padding: 20px"
           >
             <h2>Ajoutez du contrôle qualité</h2>
+            <aside class="notes">
+              Sondage : quels outils de contrôle qualité utilisez-vous ? Quels moyens avez-vous déjà utilisé
+              pour vous assurer qu'un code est de qualité ? Fonctionne comme attendu ?
+            </aside>
           </section>
           <section data-background-color="black">
-            <h2>Intro - TBD</h2>
+            <h2>La pyramide des tests</h2>
+            <image src="./images/pyramide_des_tests.png" />
+            <aside class="notes">
+              <a href="https://en.wikipedia.org/wiki/Mike_Cohn">Mike Cohn</a>, l'un des contributeurs de la méthode
+              de développement Scrum et fondateur de l'alliance Scrum a introduit ce concept en 2009 dans son livre
+              <a href="https://www.amazon.fr/Cohn-Succeeding-Agile-Mike/dp/0321579364">Succeeding with Agile</a>.
+              Elle introduit différentes catégories de tests et les recommande en fonction de leur coût et de leur valeur.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text">Anti pattern : cornet de glace</h2>
+            <image src="./images/cornet_de_glace.png" />
+            <aside class="notes">
+              On l'appelle aussi la pyramide inversée. C'est un anti pattern car on a a beaucoup
+              plus de tests coûteux à écrire et à maintenir, et longs à exécuter. Si l'on devait résumer, plus on avance avec les meilleures
+              intentions du monde et plus on se tir une balle dans le pied.
+              <a href="https://youtu.be/jny4rGj4w88">Vidéo de 10 minutes qui développe un peu plus le sujet de la pyramide et du cornet</a>.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2>Pyramide réactualisée</h2>
+            <ol>
+              <li>Analyse statique, de structure</li>
+              <li>Tests unitaires</li>
+              <li>Tests d'intégration et API</li>
+              <li>Tests de bout en bout (e2e / End To End)</li>
+              <li>Tests d'approbation</li>
+              <li>Tests de charge et de sécurité</li>
+            </ol>
+            <aside class="notes">
+              Les pratiques et langages de développement ont évolué depuis 2009.
+              Voici une pyramide plus contemporaine, nous allons voir comment on peut l'appliquer à nos projets.
+              Le premier élément n'entre normalement pas dans la pyramide car on ne peut pas parler tout à fait de tests,
+              cependant c'est un peu le niveau zéro.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2>Analyse statique, de structure</h2>
+            <aside class="notes">
+              Il existe des outils qui permettent d'analyser le code statiquement, c'est à dire sans l'exécuter.
+              Ils permettent de détecter des erreurs de syntaxe, des erreurs de logique, des erreurs de sécurité, des erreurs de performance.
+
+              Ils se sont popularisés avec l'arrivée des langages de programmation statiquement typés comme Java, C# ou encore PHP puis JavaScript avec TypeScript.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2>Analyse statique</h2>
+            <p class="r-fit-text">Détecte (parfois, corrige automatiquement)<br/><strong>sans éxécuter le code</strong> les erreurs de :</p>
+            <ul class="r-fit-text">
+              <li>Syntaxe et mise en forme, code mort :
+                <a href="https://prettier.io/">prettier</a>,
+                <a href="https://cs.symfony.com/">php cs fixer</a>,
+                <a href="https://rome.tools/">rome</a>,
+                <a href="https://pylint.readthedocs.io/en/latest/">pylint</a>,
+                ...
+              </li>
+              <li>Logique : <a href="https://www.typescriptlang.org/">typescript</a>, <a href="https://phpstan.org/">phpstan</a>, <a href="https://pmd.github.io/latest/">pmd</a></li>
+              <li>Sécurité : détection des mauvaises pratiques qui conduisent à des failles (ex: XSS, injections Shell, SQL, etc.)</li>
+              <li>Performance : certains outils ci-dessus, sinon on utilise au runtime des APM tels que <a href="https://www.blackfire.io/">blackfire</a> par ex.</li>
+            </ul>
+            <aside class="notes">
+              Sur le volet sécurité, il existe un catalogue publique des failles recensées,
+              les <a href="https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=symfony">Common Vulnerabilities & Exposures</a> ou CVE.
+
+              Il existe égalemet l'organisme <a href="https://owasp.org/www-project-top-ten/">OWASP</a> qui recensce et classe les failles
+              les plus courantes, et publie des recommandations pour les éviter.
+
+              Ces outils d'analyse statique savent faire le lien entre l'ensemble des fichiers dans votre code sans vraiment
+              comprendre ce qu'ils font ou comment vous avez décidé de les organiser.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2>Analyse de structure</h2>
+            <p>Pour maintenir une architecture propre</p>
+            <p>Des outils tels que <a href="https://qossmic.github.io/deptrac/">Deptrac</a>.</p>
+            <aside class="notes">
+              Contrairement aux outils d'analyse statique de code, ici on s'intérresse à catégoriser les fichiers de code
+              et respecter une architecture. On peut par exemple interdire les dépendances entre certains fichiers.
+
+              On a le droit de violer ces règles mais il faut alors les documenter et les justifier, ainsi si c'était une contraction de dette technique,
+              il faudra la rembourser en remédiant à cette violation de règle notée, on ne cache rien sous le tapis !
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 style="margin-bottom: 0;">Tests unitaires</h2>
+            <p class="r-fit-text">
+              Vérifient le bon fonctionnement d'une fonction ou d'une méthode.
+              <br/>Avec des outils tels que
+              <a href="https://junit.org/">junit</a>,
+              <a href="https://phpunit.de/">phpunit</a>,
+              <a href="https://docs.pytest.org/en/latest/">pytest</a>,
+              <a href="https://jestjs.io">jest</a>,
+              ...
+            </p>
+            <pre data-id="code-animation">
+							<code class="hljs">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class StackTest extends TestCase
+{
+    public function testPushAndPop()
+    {
+        $stack = [];
+        $this->assertSame(0, count($stack));
+
+        array_push($stack, 'foo');
+        $this->assertSame('foo', $stack[count($stack)-1]);
+        $this->assertSame(1, count($stack));
+    }
+}
+							</code>
+            </pre>
+            <aside class="notes">
+              Ils étaient loin d'être systématiques dans les années 2000, mais ils sont devenus incontournables aujourd'hui.
+              Ils se sont démocratisés avec XP (Extreme Programming) à la fin des années 1990. Puis à partir de 2005
+              avec <a href="https://fr.wikipedia.org/wiki/Test_driven_development">TDD (Test Driven Development)</a>.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text" style="margin-bottom: 0;">Tests d'intégration et API</h2>
+            <p class="r-fit-text">
+              Vérifient le bon fonctionnement de vos contrats applicatifs,
+              c'est à dire un ensemble de services répondant à une fonctionnalité utilisateur final.
+            </p>
+            <p class="r-fit-text">
+              On parle aussi de tests de <strong>comportement</strong>, avec des outils tels que
+              <a href="https://cucumber.io/docs/installation/java/">Cucumber JVM</a>,
+              <a href="https://docs.behat.org">Behat</a>,
+              <a href="https://cucumber.io/docs/installation/javascript/">Cucumber JS</a>,
+              <a href="https://behave.readthedocs.io">Behave</a>,
+              ...
+            </p>
+            <pre data-id="code-animation">
+							<code class="hljs" data-trim data-line-numbers="2-15|17-26">
+              Feature: Register a vehicle
+              In order to follow many vehicles with my application
+              As an application user
+              I should be able to register my vehicle
+
+              Scenario: I can register a vehicle
+                  Given my fleet
+                  And a vehicle
+                  When I register this vehicle into my fleet
+                  Then this vehicle should be part of my vehicle fleet
+							</code>
+            </pre>
+            <aside class="notes">
+              Pour faire un lien avec ce que l'on a vu précédemment, les designs pattern vous faciliteront
+              la vie pour écrire des tests d'intégration.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text" style="margin-bottom: 0;">Tests de bout en bout (e2e / End To End)</h2>
+            <p class="r-fit-text">
+              Vérifient qu'une application (web, mobile, ...) se comporte comme prévu, du début à la fin.
+            </p>
+            <p class="r-fit-text">
+              Avec des outils tels que
+              <a href="https://www.selenium.dev/">Selenium</a>,
+              <a href="https://www.cypress.io/">Cypress</a>,
+              <a href="https://playwright.dev/">Playwright</a>,
+              <a href="https://appium.io/">Appium</a>,
+              <a href="https://wix.github.io/Detox/">Detox</a>,
+              ...
+            </p>
+            <aside class="notes">
+              Vu que ce sont les tests les plus coûteux (en temps et en ressources), ils sont à utiliser avec parcimonie.
+              À relativiser cependant avec les mêmes tests manuels, qui sont plus coûteux encore.
+              On priorisera toujours de couvrir le chemin critique d'une application (par exemple, l'inscription d'un utilisateur, le tunnel de paiement, ...).
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 style="margin-bottom: 0;">Tests d'approbation</h2>
+            <p class="r-fit-text">
+              Ou Approval Tests, reposent essentiellement sur la comparaison de fichiers textes, via des création de snapshots.
+              Avec des outils tels que <a href="https://approvaltests.com/">Approval Tests</a>, mais beaucoup d'outils de tests unitaires proposent au moins en partie cette fonctionnalité.
+            </p>
+            <p class="r-fit-text">
+              Particulièrement utile avant de se lancer dans des refactoring de code, encore plus lorsqu'il est legacy (code hérité).
+            </p>
+            <p class="r-fit-text">
+              Vous pourrez aussi entendre, Golden Master, Snaphot Tests, Locking Tests, Regression Tests, ... pour parler de ces tests.
+            </p>
+            <aside class="notes">
+              <p>
+                <strong>Attention</strong> : c'est rarement une bonne idée de conserver ces tests dans le code source car la comparaison
+              de snapshots dans le temps deviendra fragile.
+              </p>
+              <p>
+                Voyez-les plutôt comme un filet de sécurité pour vous aider à faire des refactorings qui vous semblent risqués.
+              </p>
+              <p>
+                Pour aller plus loin je vous recommande fortement cette vidéo de Devoxx France 2022 :
+                <a href="https://youtu.be/r2XMwAUqZBA">Architecturoplastie hexagonale d’un backend Node.js (Jordan Nourry, Adrien Joly, Julien Topçu)</a>.
+              </p>
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text" style="margin-bottom: 0;">Tests de charge et de sécurité</h2>
+            <p class="r-fit-text">
+              Le <strong>test de charge</strong> (load testing) consiste à mesure la performance d'une application, le plus souvent en mesurant les temps de réponse
+              en fonction de la sollicitaton. Avec des outils tels que :
+              <a href="https://www.jmeter.apache.org/">JMeter</a>,
+              <a href="https://gatling.io/">Gatling</a>,
+              <a href="https://www.k6.io/">k6</a>,
+              <a href="https://locust.io/">Locust</a>,
+            </p>
+            <p class="r-fit-text">
+              Le <strong>test de sécurité</strong> ou <strong>pentest</strong> (penetration testing) consiste à tester les failles de sécurité d'une application,
+              le plus souvent en simulant des attaques. Un <a href="https://github.com/enaqx/awesome-pentest">dépôt Github</a>
+              pour se sensibiliser sur le sujet, ouils et techniques.
+            </p>
+            <aside class="notes">
+              <p>
+                L'utilisation de plateformes cloud avec des ressources serverless au capacité de mise à l'échelle pratiquement
+                infinies et instantannées telles que <a href="https://aws.amazon.com/fr/lambda/">AWS Lambda</a> ou
+                <a href="https://azure.microsoft.com/fr-fr/services/functions/">Azure Functions</a> ont minimisé la nécessité de
+                tester la charge d'une application : elle tiendra le prix qu'on est prêt à payer.
+              </p>
+              <p>
+                Pour les pentests, il est toujours recommandé de faire appel à des experts qui délivreront un rapport de sécurité
+                avec les niveaux de criticité et les recommandations d'amélioration. Un pentest coûte très souvent quelques
+                dizaines de milliers d'euros. Il est donc important de bien définir les objectifs et les attaques à simuler.
+              </p>
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text" style="margin-bottom: 0;">Pyramide de tests</h2>
+            <p>Ce qu'il faut retenir</p>
+            <ul class="r-fit-text">
+              <li>Les tests unitaires sont les plus rapides à écrire et à maintenir</li>
+              <li>Essayez d'écrire les tests d'abord, puis le code, pour vous aider à mieux concevoir</li>
+              <li>Essayez de ne pas tester deux fois la même fonctionnalité avec des des types de tests différents ou dans dans des tests d'intégration distincts.</li>
+            </ul>
+            <aside class="notes">
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text" style="margin-bottom: 0;">Pour aller plus loin</h2>
+            <ul class="r-fit-text">
+              <li>Assurez-vous d'avoir les extensions de votre éditeur de code qui vous aident à formatter votre code, détecter des erreurs et tester facilement.</li>
+              <li>Mettez en place une intégration continue :
+                <a href="https://docs.github.com/fr/actions">Github Actions</a>,
+                <a href="https://www.jenkins.io/">Jenkins</a>,
+                ...
+              </li>
+              <li>Perfectionnez-vous en BDD (Behavioral Driven Development) avec <a href="https://youtu.be/Kdi3BtO3ONY">cette vidéo</a>.</li>
+            </ul>
+            <aside class="notes">
+            </aside>
           </section>
         </section>
         <section>
@@ -1998,7 +2661,99 @@
             <h2>Rendez votre documentation vivante</h2>
           </section>
           <section data-background-color="black">
-            <h2>Intro - TBD</h2>
+            <h2 class="r-fit-text">Rendez votre documentation vivante</h2>
+            <p>
+              La documentation la plus à jour, c'est le code.
+            </p>
+            <p class="fragment fade-up">
+              ... mais vous ne pouvez pas exiger d'une
+              équipe tierce (interne ou externe) de lire le code pour comprendre comment utiliser
+              votre API par exemple.
+            </p>
+            <aside class="notes">
+              On est face à un dilemme : comment s'assurer que la documentation reste à jour en même temps que le code ?
+              La solution la plus simple est de générer la documentation à partir du code.
+              Mais qu'est-ce qu'on entend par "générer", qu'est-ce qu'on pourrait bien générer selon vous ?
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text" style="margin-bottom: 0;">Documentez vos contrats</h2>
+            <p class="r-fit-text">
+              Ce qui décrit les règles de communication entre deux parties.
+            </p>
+            <div class="fragment fade-up">
+              <p>Les contrats peuvent être :</p>
+              <ul class="r-fit-text">
+                <li>Des scénarios d'utilisation (cucumber/gherkin)</li>
+                <li>Des API (GraphQL, REST, RPC, ...)</li>
+                <li>Des librairies développées pour aider des tiers à s'intégrer/étendre les fonctionnalités de votre application</li>
+                <li>Des composants d'interface graphique utilisateur réutilisables</li>
+              </ul>
+            </div>
+          </section>
+          <section data-background-color="black">
+            <h2>Documentation d'API</h2>
+            <p>
+              <a href="https://swagger.io/">Swagger</a> est un standard de documentation d'API,
+              en particulier <a href="https://swagger.io/resources/open-api/">OpenAPI</a>.
+            </p>
+            <p>
+              Avec Symfony et <a href="https://api-platform.com/">API Platform</a>, vous pouvez générer facilement
+              un fichier OpenAPI à partir de vos annotations de code et donc publier une documentation d'API toujours
+              à jour si vous enrichissez votre pipeline de CI/CD.
+            </p>
+            <aside class="notes">
+              On peut aussi citez GraphQL et son écosystème de documentation, pensé pour être généré à partir du code dès le départ.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text">Documentation d'API Événementielle</h2>
+            <p>
+              Lorsque vous développez une application basée sur des événements (traitements asynchrones),
+              vous pouvez générer une documentation au format <a href="https://www.asyncapi.com/">AsyncAPI</a>.
+            </p>
+            <p>
+              <a href="https://www.eventcatalog.dev/">EventCatalog</a> est un outil qui permet de présenter cette documentation, et plus.
+            </p>
+            <aside class="notes">
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text">Documentation de composants graphiques</h2>
+            <p>
+              Des outils tels que <a href="https://storybook.js.org/">StoryBook</a> ou <a href="https://backlight.dev/">Backlight</a>
+              permettent de documenter des composants graphiques.
+            </p>
+            <aside class="notes">
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text">Documentation de décisions</h2>
+            <p>
+              Se reposer sur le principe d'<a href="https://github.com/joelparkerhenderson/architecture-decision-record">ADR (Architecture Decision Records)</a>
+              pour documenter les décisions prises et avoir un historique.
+            </p>
+            <aside class="notes">
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text" style="margin-bottom: 0;">Les commentaires dans le code</h2>
+            <p class="r-fit-text">Si le code est clean, les commentaires sont pratiquement inutiles</p>
+            <ul>
+              <li>Pas de paraphase : documenter le type d'une variable d'un langage typé</li>
+              <li>Le strict nécessaire : comme ce n'est pas du code, ils deviennet facilement obsolètes.</li>
+            </ul>
+            <aside class="notes">
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text" style="margin-bottom: 0;">Documentation Vivante</h2>
+            <p>Pour aller plus loin</p>
+            <p>
+              <a href="https://youtu.be/Tw-wcps7WqU">Living Documentation : vous allez aimer la documentation ! (Cyrille Martraire)</a>
+            </p>
+            <aside class="notes">
+            </aside>
           </section>
         </section>
       </div>
@@ -2020,7 +2775,8 @@
         center: true,
         hash: true,
 
-        // Learn about plugins: https://revealjs.com/plugins/
+        // Learn about plugins
+        // https://revealjs.com/plugins/
         plugins: [
           RevealMarkdown,
           RevealHighlight,
