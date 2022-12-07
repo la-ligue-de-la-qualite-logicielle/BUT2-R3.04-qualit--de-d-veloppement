@@ -1,0 +1,2034 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>reveal.js</title>
+    <link
+      rel="preload"
+      href="dist/theme/fonts/mona-sans/Mona-Sans.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="dist/theme/fonts/hubot-sans/Hubot-Sans.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./dist/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./dist/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./dist/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./dist/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="./dist/favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/iut-aix-en-provence.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section
+          data-background="./images/title-bg.jpg"
+          data-auto-animate
+          data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+          style="color: white"
+        >
+          <h2 style="color: white">Qualité de développement</h2>
+          <p>
+            <small>BUT2-R3.04 - année 2022</small>
+          </p>
+          <img
+            data-src="images/iut-aix-marseille-logo.png"
+            alt="IUT Aix-Marseille logo"
+            height="130"
+          />
+          <aside class="notes">
+            Bienvenus au module qualité de développement logiciel, nous sommes
+            ensemble pour 19h.
+          </aside>
+        </section>
+        <section>
+          <section
+            data-background="./images/hello-bg.jpg"
+            data-auto-animate
+            data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+          ></section>
+          <section
+            data-background-color="black"
+            data-auto-animate
+            data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+          >
+            <h2>Qui suis-je ?</h2>
+            <p>Sébastien HOUZÉ</p>
+            <div style="display: flex; gap: 24px; justify-content: center">
+              <a
+                target="_blank"
+                rel="noopener"
+                href="https://twitter.com/sebastienhouze"
+              >
+                <img
+                  height="60"
+                  data-src="./images/twitter-negate-logo.png"
+                  alt="Logo Twitter"
+                />
+              </a>
+              <a
+                target="_blank"
+                rel="noopener"
+                href="https://twitter.com/shouze"
+              >
+                <img
+                  height="60"
+                  data-src="./images/github-negate-logo.png"
+                  alt="Logo Github"
+                />
+              </a>
+              <a
+                target="_blank"
+                rel="noopener"
+                href="https://www.linkedin.com/in/sebastien-houze/"
+              >
+                <img
+                  height="60"
+                  data-src="./images/linkedin-negate-logo.png"
+                  alt="Logo LinkedIn"
+                />
+              </a>
+            </div>
+            <div class="fragment fade-up">
+              <p>
+                20 ans d'XP, de développeur à CTO en passant par responsable
+                qualité logicielle.
+              </p>
+              <div style="display: flex; gap: 24px; justify-content: center">
+                <img
+                  height="60"
+                  data-src="./images/rdc-logo.png"
+                  alt="Logo Rue du commerce"
+                />
+                <img
+                  height="60"
+                  data-src="./images/vlr-negate-logo.png"
+                  alt="Logo VeryLastRoom"
+                />
+                <img
+                  height="60"
+                  data-src="./images/onatera-logo.png"
+                  alt="Logo Onatera"
+                />
+                <img
+                  height="60"
+                  data-src="./images/gogaille-logo.png"
+                  alt="Logo Gogaille"
+                />
+              </div>
+            </div>
+            <aside class="notes">
+              J'ai notamment occupé les fonctions de Développeur, Chef de
+              projet, Responsable qualité logicielle, Architecte, CTO.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2>Qui êtes-vous ?</h2>
+            <!-- <p>
+              Rendez-vous sur <a href="https://menti.com">menti.com</a>
+              <br />
+              tapez le code <mark>3645&nbsp;4170</mark>
+            </p> -->
+            <div class="fragment">
+              <small>⏳ 5 min chit-chat</small>
+            </div>
+            <aside class="notes">
+              Je vous ai promis quelque chose d'interactif, alors vous allez
+              devoir répondre à un certain nombre de questions. Je vais vous
+              demander de vous rendre sur menti.com et d'entrer le code qui
+              s'affiche à l'écran.
+            </aside>
+          </section>
+        </section>
+        <section>
+          <section
+            data-background="./images/introduction-bg.jpg"
+            data-auto-animate
+            data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+            style="height: 100%"
+          >
+            <h2
+              class="r-fit-text"
+              style="
+                position: absolute;
+                bottom: 10vh;
+                left: 0;
+                width: 100%;
+                color: white;
+                text-shadow: 1px 1px 4px gray;
+              "
+            >
+              Introduction
+            </h2>
+          </section>
+          <section
+            data-background-color="black"
+            data-background="./images/why-bg.png"
+          >
+            <h2>Pourquoi</h2>
+            <h3>La qualité logicielle ?</h3>
+          </section>
+          <section data-background-color="black">
+            <h2>3 principaux enjeux*</h2>
+            <ol>
+              <li>
+                <h3>Stratégique</h3>
+              </li>
+              <li>
+                <h3>Économique</h3>
+              </li>
+              <li>
+                <h3>Compétitivité</h3>
+              </li>
+            </ol>
+            <h4 class="r-fit-text">
+              *D'autant plus importants et liés à la durée de vie du logiciel
+            </h4>
+          </section>
+          <section data-background-color="black">
+            <h2>Enjeu Stratégique</h2>
+            <p>
+              Parce que ne pas en faire, c'est le meilleur moyen de
+              <strong>multiplier les bugs</strong> et de
+              <strong>perdre des clients ou utilisateurs</strong> d'une
+              l'application.
+            </p>
+          </section>
+          <section data-background-color="black">
+            <h2>Enjeu Économique</h2>
+            <p>
+              Parce que sinon le
+              <strong>coût de maintenance d'une ligne de code</strong>
+              explose.
+            </p>
+            <img
+              src="./images/cost-per-line.avif"
+              alt="Cost per line of code over time"
+            />
+          </section>
+          <section data-background-color="black">
+            <h2>Enjeu de Compétitivité</h2>
+            <p>
+              Parce qu'une équipe qui pratique la qualité augmente sa capacité à
+              produire de nouvelles fonctionnalités appréciées par les
+              utilisateurs, plus rapidement.
+            </p>
+          </section>
+          <section
+            data-background="./images/ghostbusters-bg.jpg"
+            data-auto-animate
+            data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+          >
+            <div class="r-vstack justify-end" style="height: 80vh">
+              <h2
+                style="
+                  color: white;
+                  text-shadow: 1px 1px 4px gray;
+                  margin-bottom: 0;
+                "
+              >
+                Où peut-on intervenir ?
+              </h2>
+              <div class="r-hstack justify-center">
+                <div
+                  data-id="conception"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 5px;
+                    padding: 20px;
+                    margin: 10px;
+                    border: 3px solid #4ac26b;
+                    width: 20px;
+                    height: 20px;
+                  "
+                ></div>
+                <div
+                  data-id="maintenance"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 5px;
+                    padding: 20px;
+                    margin: 10px;
+                    border: 3px solid #eac54f;
+                    width: 20px;
+                    height: 20px;
+                  "
+                ></div>
+                <div
+                  data-id="features"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 5px;
+                    padding: 20px;
+                    margin: 10px;
+                    border: 3px solid #6639ba;
+                    width: 20px;
+                    height: 20px;
+                  "
+                ></div>
+              </div>
+            </div>
+          </section>
+          <section
+            data-background-color="black"
+            data-auto-animate
+            data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+          >
+            <h2>SDLC</h2>
+            <div class="r-stack">
+              <div
+                data-id="conception"
+                style="
+                  background-color: #dafbe1;
+                  border: 3px solid #4ac26b;
+                  width: 300px;
+                  height: 300px;
+                  border-radius: 200px;
+                "
+              ></div>
+              <div
+                data-id="maintenance"
+                style="
+                  background-color: #fff8c5;
+                  border: 3px solid #eac54f;
+                  width: 200px;
+                  height: 200px;
+                  border-radius: 200px;
+                "
+              ></div>
+              <div
+                data-id="features"
+                style="
+                  background-color: #fbefff;
+                  border: 3px solid #6639ba;
+                  width: 100px;
+                  height: 100px;
+                  border-radius: 200px;
+                "
+              ></div>
+            </div>
+            <p>
+              *<strong>S</strong>oftware <strong>D</strong>evelopment
+              <strong>L</strong>yfe<strong>C</strong>ycle
+            </p>
+          </section>
+          <section
+            data-background-color="black"
+            data-auto-animate
+            data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+          >
+            <div class="r-hstack justify-center" style="color: black">
+              <div
+                data-id="conception"
+                data-auto-animate-delay="0"
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  border-radius: 5px;
+                  padding: 20px;
+                  margin: 10px;
+                  background-color: #dafbe1;
+                  border: 3px solid #4ac26b;
+                  color: #044f1e;
+                  width: 300vw;
+                  height: 20vh;
+                "
+              >
+                Conception
+              </div>
+              <div
+                data-id="maintenance"
+                data-auto-animate-delay="0.1"
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  border-radius: 5px;
+                  padding: 20px;
+                  margin: 10px;
+                  background-color: #fff8c5;
+                  border: 3px solid #eac54f;
+                  color: #633c01;
+                  width: 300vw;
+                  height: 20vh;
+                "
+              >
+                Maintenance
+              </div>
+              <div
+                data-id="features"
+                data-auto-animate-delay="0.2"
+                style="
+                  display: flex;
+                  background-color: white;
+                  align-items: center;
+                  justify-content: center;
+                  border-radius: 5px;
+                  padding: 20px;
+                  margin: 10px;
+                  background-color: #fbefff;
+                  border: 3px solid #6639ba;
+                  color: #512a97;
+                  width: 300vw;
+                  height: 20vh;
+                "
+              >
+                Évolution
+              </div>
+            </div>
+            <h2 class="r-fit-text">
+              Qu'est-ce qui peut vous alerter sur un problème de qualité à
+              chacune de ces étapes ?
+            </h2>
+          </section>
+          <section
+            data-background-color="black"
+            data-auto-animate
+            data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+            style="color: #044f1e"
+          >
+            <div class="r-hstack justify-center">
+              <div
+                data-id="conception"
+                data-auto-animate-delay="0"
+                style="
+                  height: 80vh;
+                  display: flex;
+                  align-items: center;
+                  justify-content: start;
+                  flex-direction: column;
+                  border-radius: 5px;
+                  padding: 20px;
+                  margin: 10px;
+                  background-color: #dafbe1;
+                  border: 3px solid #4ac26b;
+                  width: 300vw;
+                "
+              >
+                <h2 style="display: block; margin-bottom: 0; color: #044f1e">
+                  Conception
+                </h2>
+                <p style="margin-top: 0">Vous avez du mal à :</p>
+                <ul>
+                  <li class="fragment fade-up">
+                    Comprendre le code que vous avez écrit il y a quelques jours
+                    ou semaines.
+                  </li>
+                  <li class="fragment fade-up">
+                    Vous faire aider par un collègue car il ne comprend pas
+                    votre code.
+                  </li>
+                  <li class="fragment fade-up">
+                    Vous assurer que vous couvrez bien la fonctionnalité
+                    demandée.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <section
+            data-background-color="black"
+            data-auto-animate
+            data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+            style="color: #633c01"
+          >
+            <div class="r-hstack justify-center">
+              <div
+                data-id="maintenance"
+                data-auto-animate-delay="0"
+                style="
+                  height: 80vh;
+                  display: flex;
+                  align-items: center;
+                  justify-content: start;
+                  flex-direction: column;
+                  border-radius: 5px;
+                  padding: 20px;
+                  margin: 10px;
+                  background-color: #fff8c5;
+                  border: 3px solid #eac54f;
+                  width: 300vw;
+                "
+              >
+                <h2 style="display: block; margin-bottom: 0; color: #633c01">
+                  Maintenance
+                </h2>
+                <p style="margin-top: 0">Vous avez du mal à :</p>
+                <ul>
+                  <li class="fragment fade-up">Débugger votre application.</li>
+                  <li class="fragment fade-up">
+                    Modifier une fonctionnalité sans modifier des endroits dans
+                    le code qui ne devraient pas être impactés.
+                  </li>
+                  <li class="fragment fade-up">
+                    Vous souvenir de ce que fait votre code par rapport à la
+                    fonctionnalité à maintenir.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <section
+            data-background-color="black"
+            data-auto-animate
+            data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+            style="color: #512a97"
+          >
+            <div class="r-hstack justify-center">
+              <div
+                data-id="features"
+                data-auto-animate-delay="0"
+                style="
+                  height: 80vh;
+                  display: flex;
+                  align-items: center;
+                  justify-content: start;
+                  flex-direction: column;
+                  border-radius: 5px;
+                  padding: 20px;
+                  margin: 10px;
+                  background-color: #fbefff;
+                  border: 3px solid #6639ba;
+                  width: 300vw;
+                "
+              >
+                <h2 style="display: block; margin-bottom: 0; color: #512a97">
+                  Évolution
+                </h2>
+                <p style="margin-top: 0">Vous avez du mal à :</p>
+                <ul>
+                  <li class="fragment fade-up">
+                    Ajouter une nouvelle fonctionnalité.
+                  </li>
+                  <li class="fragment fade-up">
+                    Mettre des frontières entre les différentes fonctionnalités
+                    de votre application.
+                  </li>
+                  <li class="fragment fade-up">
+                    Décider où mettre une nouvelle fonctionnalité.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section
+            data-background-color="black"
+            data-auto-animate
+            data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+          >
+            <div class="r-hstack justify-center">
+              <div
+                data-id="conception"
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  border-radius: 5px;
+                  padding: 20px;
+                  margin: 10px;
+                  border: 3px solid #4ac26b;
+                  width: 50px;
+                  height: 50px;
+                "
+              ></div>
+              <div
+                data-id="maintenance"
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  border-radius: 5px;
+                  padding: 20px;
+                  margin: 10px;
+                  border: 3px solid #eac54f;
+                  width: 50px;
+                  height: 50px;
+                "
+              ></div>
+              <div
+                data-id="features"
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  border-radius: 5px;
+                  padding: 20px;
+                  margin: 10px;
+                  border: 3px solid #6639ba;
+                  width: 50px;
+                  height: 50px;
+                "
+              ></div>
+            </div>
+            <h2 class="r-fit-text" style="margin-top: 20px; margin-bottom: 0">
+              Ce module doit vous aider à...
+            </h2>
+            <p style="margin-top: 0" class="fragment fade-up">
+              ... écrire un code <strong>propre</strong> et
+              <strong>compréhensible</strong>.
+            </p>
+          </section>
+          <section data-background-color="black">
+            <h2 style="margin-bottom: 0">Code propre</h2>
+            <p style="margin-top: 0" class="r-fit-text">
+              En conclusion de ce module, nous vérifierons qu'il est :
+            </p>
+            <ol>
+              <li class="fragment fade-up">
+                Facile à faire évoluer, on comprend qui est responsable de quoi
+              </li>
+              <li class="fragment fade-up">Organisé en modules découplés</li>
+              <li class="fragment fade-up">
+                L'expression la plus pure du métier qu'il réalise
+              </li>
+            </ol>
+          </section>
+          <section data-background-color="black">
+            <h2 style="margin-bottom: 0">Code compréhensible</h2>
+            <p style="margin-top: 0" class="r-fit-text">
+              en conclusion de ce module, nous vérifierons qu'il :
+            </p>
+            <ol>
+              <li class="fragment fade-up">
+                Favorise toujours l'explicite à l'implicite
+              </li>
+              <li class="fragment fade-up">Suit des règles de conception</li>
+              <li class="fragment fade-up">
+                Est documenté par ses cas d'usage
+              </li>
+            </ol>
+          </section>
+          <section data-background-color="black">
+            <h2>À la fin de ce module :</h2>
+            <ol>
+              <li class="fragment fade-up">
+                Les règles élémentaires de la programmation fonctionnelle
+              </li>
+              <li class="fragment fade-up">
+                La création d'un objet et de ses dépendances
+              </li>
+              <li class="fragment fade-up">
+                La gestion de la relation entre objets
+              </li>
+              <li class="fragment fade-up">
+                La gestion des responsabilités et comportements d'un objet
+              </li>
+            </ol>
+            <p style="margin-top: 0" class="r-fit-text fragment fade-up">
+              N'aurons plus de secrets pour vous !
+            </p>
+          </section>
+          <section
+            data-background-color="black"
+            data-background="./images/why-bg.png"
+          >
+            <h2 style="margin-bottom: 0" class="r-fit-text">
+              Pourquoi La qualité logicielle ?
+            </h2>
+            <h4 style="margin-top: 0" ;>Ce qu'il faut retenir</h4>
+            <ul style="padding: 30px; backdrop-filter: blur(10px)">
+              <li>
+                La qualité logicielle apporte des
+                <strong>garanties économiques et stratégiques</strong>.
+              </li>
+              <li>
+                Dans les faits, <strong>Qualité = Vélocité</strong>. Vous ne
+                pouvez être totalement convaincu que par la mise en pratique.
+              </li>
+            </ul>
+          </section>
+          <section
+            data-background-color="black"
+            data-background="./images/why-bg.png"
+          >
+            <h2 style="margin-bottom: 0" class="r-fit-text">
+              Pourquoi La qualité logicielle ?
+            </h2>
+            <h4 style="margin-top: 0" ;>Pour aller plus loin</h4>
+            <div
+              style="padding: 30px; backdrop-filter: blur(10px)"
+              class="r-fit-text"
+            >
+              <p>
+                Une partie de la qualité logicielle puise son inspiration dans
+                les processus industriels tels que
+                <a
+                  target="_blank"
+                  rel="noopener"
+                  href="https://en.wikipedia.org/wiki/Six_Sigma"
+                  >Six Sigma (1986, Motorola)</a
+                >
+                ou encore
+                <a
+                  target="_blank"
+                  rel="noopener"
+                  href="https://en.wikipedia.org/wiki/The_Toyota_Way"
+                  >Toyota Way/Lean/Kanban (2001)</a
+                >
+              </p>
+              <p>
+                <a
+                  target="_blank"
+                  rel="noopener"
+                  href="https://en.wikipedia.org/wiki/ISO/IEC_9126"
+                  >ISO/IEC 9126</a
+                >
+                est un standard international qui définit les critères de
+                qualité logicielle, articulés autour de 6 axes (testabilité,
+                fiabilité, sécurité, maintenabilité, portabilité, utilisabilité)
+              </p>
+              <p>
+                L'agilité est une approche de développement logiciel qui prône
+                la production de valeur par le logiciel à la vélocité la plus
+                constante possible, sans sacrifier la qualité. Voir,
+                <a
+                  target="_blank"
+                  rel="noopener"
+                  href="https://fr.wikipedia.org/wiki/Extreme_programming"
+                  >eXtreme Programming (1999)</a
+                >,
+                <a
+                  target="_blank"
+                  rel="noopener"
+                  href="https://fr.wikipedia.org/wiki/Scrum_(d%C3%A9veloppement)"
+                  >Scrum (1986)</a
+                >,
+                <a
+                  target="_blank"
+                  rel="noopener"
+                  href="https://fr.wikipedia.org/wiki/Kanban_(d%C3%A9veloppement)"
+                  >Kanban (2003)</a
+                >,
+                <a
+                  target="_blank"
+                  rel="noopener"
+                  href="https://fr.wikipedia.org/wiki/Software_craftsmanship"
+                  >Software Craftsmanship (2008)</a
+                >,
+              </p>
+            </div>
+          </section>
+        </section>
+        <section
+          data-background-color="black"
+          data-background="./images/blueprint-bg.jpg"
+          style="padding: 10px 30px; backdrop-filter: blur(30px)"
+        >
+          <h2>Plan</h2>
+          <ol>
+            <li>Maux et remèdes : dette et refactoring</li>
+            <li>programmation fonctionnelle & immuabilité</li>
+            <li>Améliorez une application avec SOLID</li>
+            <li>Détectez une application STUPID</li>
+            <li>Design Patterns</li>
+            <li>Ajoutez du contrôle qualité</li>
+            <li>Rendez votre documentation vivante</li>
+          </ol>
+        </section>
+        <section>
+          <section
+            data-background-color="black"
+            data-background="./images/pills-bg.jpg"
+            style="backdrop-filter: blur(12px); padding: 20px"
+          >
+            <h2>Maux et remèdes</h2>
+            <h3>Dette et Refactoring</h3>
+          </section>
+          <section data-background-color="black">
+            <h2>La dette technique</h2>
+            <blockquote class="r-fit-text">
+              La dette technique est un concept du développement logiciel
+              inventé par Ward Cunningham en 1992. Le terme vient d'une
+              métaphore, inspirée du concept existant de dette dans le domaine
+              des finances et des entreprises, appliquée au domaine du
+              développement logiciel.
+              <a
+                href="https://fr.wikipedia.org/wiki/Dette_technique"
+                target="_blank"
+                rel="noopener"
+                >[Wikipedia]</a
+              >
+            </blockquote>
+            <aside class="notes">
+              Ward Cunningham est le créateur de Wiki, et de la méthode Extreme
+              Programming.
+            </aside>
+          </section>
+          <section data-background="black">
+            <h2 style="margin-bottom: 0">La dette technique</h2>
+            <h4 style="margin-top: 0">Dans la vie</h4>
+            <image style="height: 60vh" src="./images/dette-technique-bd.jpg" />
+          </section>
+          <section data-background="black">
+            <h2 style="margin-bottom: 0">La dette technique</h2>
+            <h4 style="margin-top: 0">Définition plus personnelle</h4>
+            <p class="r-fit-text">
+              La dette technique c’est le fait
+              <strong>d’ajouter de la complexité</strong> à un projet engendré
+              <strong>par des décisions techniques</strong> qui entraînent la
+              livraison d’un logiciel de <strong>faible qualité</strong>.
+            </p>
+            <p class="fragment fade-up r-fit-text">
+              Qui dit dette dit qu'on peut en principe décider (éviter de subir)
+              quand on s'endette. Cela signifie aussi qu'on peut rembourser et
+              décider plus ou moins des modalités de remboursement.
+            </p>
+          </section>
+          <section data-background="black">
+            <h2 style="margin-bottom: 0">La dette technique</h2>
+            <h4 style="margin-top: 0" class="r-fit-text">
+              Engendrée par la complexité accidentelle
+            </h4>
+            <image src="images/software-complexity.png" />
+            <aside class="notes">
+              <p>
+                Comme vous vous en doutez, les complexités essentielles et
+                obligatoires sont celles qui sont inhérentes au métier et à la
+                technologie. Elles sont donc inévitables. La complexité
+                accidentelle est celle qui est engendrée par des choix
+                techniques. Elle est donc évitable et surtout pas nécessaire.
+              </p>
+              <p>
+                Je vous invite à lire
+                <a
+                  href="https://www.lilobase.me/certaines-complexites-sont-plus-utiles-que-dautres/"
+                  >cet article d'Arnaud Lemaire [FR]</a
+                >
+                qui approfondit le sujet. Pour les plus témérraires,
+                <a
+                  href="https://martinfowler.com/bliki/TechnicalDebtQuadrant.html"
+                  >celui de Martin Fowler [EN]</a
+                >
+                est aussi très intéressant.
+              </p>
+            </aside>
+          </section>
+          <section data-background="black">
+            <h2 style="margin-bottom: 0">Remèdes</h2>
+            <h4 style="margin-top: 0">
+              Refactoring, replatforming, architecture logicielle...
+            </h4>
+            <p class="r-fit-text">
+              Disclaimer: dans ce module nous nous concentrons sur les bases et
+              donc sur les méthodes qui aident à régler les problèmes généraux
+              de conception, y compris sur du code hérité (dit
+              <strong>legacy</strong>).
+            </p>
+            <p class="r-fit-text">
+              Pour la suite, nous partons du principe que vous êtes toujours
+              face à du code legacy car c'est encore plus intéressant pour
+              traiter les problématiques de conception. C'est pourquoi nous
+              allons nous concentrer sur le <strong>refactoring</strong>.
+            </p>
+            <aside class="notes">
+              <p>
+                Il existe de nombreuses manières d'éviter la dette accidentelle
+                et donc d'améliorer la qualité logicielle.
+              </p>
+              <p>
+                Les méthodes de conception que nous allons voir nécessitent déjà
+                un bon niveau d'entraînent et d'exercice sur du code legacy pour
+                faire preuve de discernememt.
+              </p>
+            </aside>
+          </section>
+          <section data-background="black">
+            <h2 style="margin-bottom: 0">Remèdes</h2>
+            <h4 style="margin-top: 0">Refactoring</h4>
+            <blockquote class="r-fit-text">
+              Le refactoring, c'est un processus d'<strong
+                >amélioration du code sans créer de nouvelle
+                fonctionnalité</strong
+              >
+              dans le but de transformer du code de faible qualité en
+              <strong>code propre, au design simplifié</strong>.
+            </blockquote>
+          </section>
+          <section data-background-color="black">
+            <h2 style="margin-bottom: 0">Refactoring</h2>
+            <h4 style="margin-top: 0">La règle de 3</h4>
+            <div class="mermaid">
+              <pre>
+          %%{init: {'theme': 'dark', 'themeVariables': { 'darkMode': true }}}%%
+          flowchart LR
+						LC[Legacy Code] --> |Refactoring|RC[Clean Code]
+        </pre
+              >
+            </div>
+            <ol class="r-fit-text">
+              <li>
+                Quand vous écrivez du code pour la 1ère fois, faites le
+                simplement.
+              </li>
+              <li>
+                Lorsque vous faites quelque chose d'identique pour la 2ème fois,
+                dégoûtez-vous de devoir répéter mais faites quand même la même
+                chose.
+              </li>
+              <li>
+                Lorsque vous faites quelque chose pour la troisième fois,
+                commencez à le remanier (refactoring).
+              </li>
+            </ol>
+          </section>
+          <section data-background-color="black">
+            <h2 style="margin-bottom: 0">Refactoring</h2>
+            <h4 style="margin-top: 0">Quand vous ajoutez une fonctionnalité</h4>
+            <p class="r-fit-text">
+              Le remaniement vous aide à comprendre le code d'autres personnes.
+              Si vous devez traiter le code sale de quelqu'un d'autre, essayez
+              d'abord de le remanier. Un code propre est beaucoup plus facile à
+              appréhender. Vous l'améliorerez non seulement pour vous-même, mais
+              aussi pour ceux qui l'utiliseront après vous.
+            </p>
+            <p class="r-fit-text">
+              Le remaniement facilite l'ajout de nouvelles fonctionnalités. Il
+              est beaucoup plus facile d'apporter des modifications dans un code
+              propre.
+            </p>
+          </section>
+          <section data-background-color="black">
+            <h2 style="margin-bottom: 0">Refactoring</h2>
+            <h4 style="margin-top: 0">Quand vous corrigez un bug</h4>
+            <p class="r-fit-text">
+              Les bugs dans le code se comportent exactement comme ceux de la
+              vie réelle : ils vivent dans les endroits les plus sombres et les
+              plus sales du code. Nettoyez votre code et les erreurs se
+              découvriront pratiquement d'elles-mêmes.
+            </p>
+            <p class="r-fit-text">
+              Le remaniement proactif élimine la nécessité de tâches de
+              remaniement spéciales par la suite. participez à instaurer le
+              bien-être dans votre équipe !
+            </p>
+          </section>
+          <section data-background-color="black">
+            <h2 style="margin-bottom: 0">Refactoring</h2>
+            <h4 style="margin-top: 0">Pendant une revue de code</h4>
+            <p class="r-fit-text">
+              La revue de code peut être la dernière chance de mettre de l'ordre
+              dans le code avant qu'il ne soit livré en production.
+            </p>
+            <p class="r-fit-text">
+              Il est préférable d'effectuer ces revues en binôme avec un auteur.
+              Ainsi vous pourrez résoudre rapidement les problèmes simples et
+              mesurer le temps nécessaire à la résolution des problèmes plus
+              difficiles.
+            </p>
+          </section>
+          <section
+            data-background-color="black"
+            data-background="./images/pills-bg.jpg"
+            style="backdrop-filter: blur(60px); padding: 20px"
+          >
+            <h2 style="margin-bottom: 0">Dette et Refactoring</h2>
+            <h3>Ce qu'il faut retenir</h3>
+            <ul class="r-fit-text">
+              <li>
+                Il faut
+                <strong
+                  >chasser la complexité accidentelle pour limiter la
+                  dette</strong
+                >. Il faut savoir faire des compromis et contracter
+                intentionnellement de la dette. Idéalement il faut une trace de
+                cette dette contractée et un plan pour la rembourser. Cela
+                demande de l'expérience.
+              </li>
+              <li>
+                Le code est vivant : le refactoring est une pratique
+                d'amélioration continue qui permet de viser la qualité.
+                D'ailleurs on dit que le code qui est rarement édité "pourri".
+              </li>
+            </ul>
+          </section>
+          <section
+            data-background-color="black"
+            data-background="./images/pills-bg.jpg"
+            style="backdrop-filter: blur(60px); padding: 20px"
+          >
+            <h2 style="margin-bottom: 0">Dette et Refactoring</h2>
+            <h3>Pour aller plus loin</h3>
+            <ul>
+              <li>
+                L'excellente conférence d'Arnaud Lemaire sur
+                <a
+                  target="_blank"
+                  ref="noopener"
+                  href="https://youtu.be/VKe9EE4MUxk"
+                  >Dette Technique et entropie du logiciel</a
+                >
+              </li>
+              <li>
+                le catalogue exhaustif de
+                <a
+                  target="_blank"
+                  ref="noopener"
+                  href="https://refactoring.guru/refactoring/techniques"
+                  >Code Guru refactoring techniques</a
+                >
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section
+            data-background-color="black"
+            data-background="./images/fp-bg.jpg"
+            style="backdrop-filter: blur(4px); padding: 20px"
+          >
+            <h2>Stateless</h2>
+            <h4>Programmation fonctionnelle & immuabilité</h4>
+          </section>
+          <section data-background-color="black">
+            <h2 style="margin-bottom: 0" class="r-fit-text">
+              Functional Programming
+            </h2>
+            <h3 style="margin-top: 0">Définition</h3>
+            <blockquote class="r-fit-text">
+              La programmation fonctionnelle puise ses origines dans les
+              mathématiques. C'est un paradigme de programmation qui traite les
+              fonctions comme des valeurs de première classe.
+            </blockquote>
+            <p class="fragment fade-up">OK... Ne fuyez pas !</p>
+            <blockquote class="fragment fade-up r-fit-text">
+              En Functional Programming (FP), on réalise des applications avec
+              des fonctions réalisent des opérations qui ne produisent
+              <strong>pas d'effet secondaire (ou side effect)</strong>.
+            </blockquote>
+          </section>
+          <section data-background-color="black">
+            <h2 style="margin-bottom: 0">Fonction Pure</h2>
+            <p class="r-fit-text" style="margin-top: 0; margin-bottom: 0">
+              <strong>LE concept clé</strong>, le seul que nous allons vraiment
+              prendre le temps de voir.
+            </p>
+            <pre data-id="code-animation">
+							<code class="hljs" data-trim data-line-numbers="2-15|17-26">
+          &lt;?php
+          $globalCounter = 0;
+          function increment(int $amount): int { // Fonction impure
+              $GLOBALS['globalCounter'] += $amount;
+
+              return $GLOBALS['globalCounter'];
+          }
+
+          echo increment(1)."\n"; // Affiche 1
+
+          $globalCounter = 0;
+          echo (2 * increment(1))."\n"; // Affiche 2
+
+          $globalCounter = 0;
+          echo (increment(1) + increment(1))."\n"; // Affiche 3, Oups!
+
+          // Fonction pure
+          function fp_increment(int $counter, int $amount): int {
+              return $counter + $amount;
+          }
+
+          // Affiche 1
+          echo fp_increment(0, 1)."\n";
+
+          // Affiche 2, on compose plutôt qu'additionner
+          echo (fp_increment(fp_increment(0, 1), 1))."\n";
+							</code>
+            </pre>
+            <aside class="notes">
+              En principe, on introduit d'abord le principe de first class
+              function qui dit qu'on peut faire de la programmation
+              fonctionnelle lorsque les fonctions d'un langage de programmation
+              donné permettent de :
+              <ul>
+                <li>Créer des fonctions à volonté</li>
+                <li>Assigner une fonction à une variable</li>
+                <li>Être passées en argument à des fonctions</li>
+                <li>Être retournées en par des fonctions</li>
+                <li>Incluses dans tout type de structures</li>
+              </ul>
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 style="margin-bottom: 0">immuabilité</h2>
+            <p class="r-fit-text">
+              Objet immuable : dont l'état ne peut pas être modifié après sa
+              création.
+            </p>
+            <pre data-id="code-animation">
+							<code class="hljs" data-trim data-line-numbers="2-10|19-26">
+              &lt;?php
+              // On est ajd le 7 décembre 2022
+
+              // Exemple de non immuabilité (on dit mutable)
+              $today = new Datetime('today');
+              echo $today->format('Y-m-d')."\n"; // Affiche 2022-12-07
+
+              $tomorrow = $today->modify('+1 day');
+              echo $today->format('Y-m-d')."\n"; // Affiche 2022-12-08
+              echo $tomorrow->format('Y-m-d')."\n"; // Affiche 2022-12-08
+
+
+
+
+
+
+
+
+              // On est ajd le 7 décembre 2022
+              // Exemple d'immuabilité (on dit immutable)
+              $today = new DatetimeImmutable('today');
+              echo $today->format('Y-m-d')."\n"; // Affiche 2022-12-07
+
+              $tomorrow = $today->modify('+1 day');
+              echo $today->format('Y-m-d')."\n"; // Affiche 2022-12-07
+              echo $tomorrow->format('Y-m-d')."\n"; // Affiche 2022-12-08
+							</code>
+              </pre>
+            <aside class="notes">
+              On s'apporte ici beaucoup de garanties à l'éxécution du code. Là
+              encore pas d'effets de bords qui pouraient être liés à l'état de
+              notre programme et de ses variables.
+            </aside>
+          </section>
+          <section
+            data-background-color="black"
+            data-background="./images/fp-bg.jpg"
+            style="backdrop-filter: blur(20px); padding: 20px"
+          >
+            <h2 class="r-fit-text">
+              Programmation fonctionnelle & immuabilité
+            </h2>
+            <h4>Ce qu'il faut retenir</h4>
+            <ul>
+              <li>
+                Les variables globales et le partage d'état dans le code c'est
+                très souvent le mal.
+              </li>
+              <li>
+                L'immuabilité et les fonctions pures permettent d'avoir du code
+                simple à tester et sans effet de bord.
+              </li>
+            </ul>
+          </section>
+          <section
+            data-background-color="black"
+            data-background="./images/fp-bg.jpg"
+            style="backdrop-filter: blur(20px); padding: 20px"
+          >
+            <h2 class="r-fit-text">
+              Programmation fonctionnelle & immuabilité
+            </h2>
+            <h4>Pour aller plus loin</h4>
+            <ul class="r-fit-text">
+              <li>
+                Une introduction assez simple à la programmation fonctionnelle,
+                sans trop aborder encore les functors, le currying ou les
+                monades :
+                <a href="https://youtu.be/AHAFIe4CWHw"
+                  >Programmation fonctionnelle en JavaScript : 🦄 ou 💩 ? - Igor
+                  Laborie</a
+                >
+              </li>
+              <li>
+                Les principes mathématiques de FP étendus à la POO :
+                <a href="https://youtu.be/_jr8E5GVnBA"
+                  >Les monoïdes démystifiés, en Java et avec des verres de bière
+                  - Cyrille Martraire</a
+                >
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section
+            data-background-color="black"
+            data-background="./images/solid-bg.jpg"
+            style="backdrop-filter: blur(4px); padding: 20px"
+          >
+            <h2>Améliorer une application</h2>
+            <h3>Respectez les principes SOLID</h3>
+          </section>
+          <section data-background-color="black">
+            <h2>SOLID ?</h2>
+            <div class="r-hstack justify-center">
+              <article class="r-fit-text">
+                <p>
+                  Robert C. Martin l'a introduit en 2002 dans son livre Agile
+                  Software Development, Principles, Patterns and Practices.
+                </p>
+                <p>
+                  L'acronyme SOLID est un moyen mnémotechnique pour retenir
+                  <strong>5 grands principes de conception</strong>
+                  d'application qui rendent plus facile à comprendre, à
+                  maintenir et faire évoluer.
+                </p>
+              </article>
+              <aside style="min-width: 30vw">
+                <image
+                  src="./images/clean-architecture-book-cover.png"
+                  alt="Uncle Bob's Clean Architecte Book Cover"
+                />
+              </aside>
+              <aside class="notes">
+                Robert C. Martin est l'un des co-auteurs la même année du
+                Manifeste Agile.
+                <br />
+                <a
+                  href="https://www.amazon.fr/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882/ref=d_pd_vtp_sccl_2_1/257-1236614-5176747"
+                  >Clean Code: A Handbook of Agile Software Craftsmanship</a
+                >
+              </aside>
+            </div>
+          </section>
+          <section data-background-color="black">
+            <h2>Les 5 principes SOLID</h2>
+            <ol>
+              <li>
+                <strong>S</strong> comme
+                <strong>Single Responsibility</strong> Principle
+              </li>
+              <li>
+                <strong>O</strong> comme <strong>Open-Closed</strong> Principle
+              </li>
+              <li>
+                <strong>L</strong> comme
+                <strong>Liskov Substitution</strong> Principle
+              </li>
+              <li>
+                <strong>I</strong> comme
+                <strong>Interface Segregation</strong> Principle
+              </li>
+              <li>
+                <strong>D</strong> comme
+                <strong>Dependency Inversion</strong> Principle
+              </li>
+            </ol>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text">S comme Single Responsibility Principle</h2>
+            <blockquote>
+              Une classe ne devrait avoir qu'une et une seule raison de changer.
+            </blockquote>
+            <p class="r-fit-text">
+              L’idée ici est de faire en sorte qu’une classe ne soit responsable
+              que d’une seule fonction de votre application, et que cette
+              responsabilité soit complètement encapsulée ("cachée") dans la
+              classe.
+            </p>
+            <h3 class="r-fit-text">
+              Objectif : réduire la complexité de votre projet.
+            </h3>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text">SRP en pratique</h2>
+            <p class="r-fit-text">
+              Imaginons que vous ayez une classe <code>Car</code> qui représente
+              une voiture. Cette classe a plusieurs responsabilités : elle gère
+              la vitesse, la direction, etc..
+            </p>
+            <p class="r-fit-text">
+              Si vous souhaitez ajouter une nouvelle fonctionnalité, par exemple
+              la gestion de la consommation de carburant, vous allez devoir
+              modifier cette classe. Et si vous souhaitez ajouter une nouvelle
+              fonctionnalité qui n'a rien à voir avec la voiture, par exemple
+              l'envoi d'un SMS à chaque fois que la voiture roule, vous allez
+              encore devoir modifier cette classe.
+            </p>
+            <p class="r-fit-text">
+              Cela va rendre votre classe très complexe et difficile à
+              maintenir. Voyez donc SRP comme une façon de vous aider à déléguer
+              proprement les responsabilités et faire collaborer vos classes qui
+              chacune assume des responsabilités spécifiques.
+            </p>
+          </section>
+          <section data-background-color="black">
+            <h2>SRP par l'exemple</h2>
+            <pre data-id="code-animation">
+							<code class="hljs" data-trim data-line-numbers="|7|13-24|9|26-39">
+							&lt;?php
+							Class CsvDataImporter {
+								public function __construct(private Db $db) {}
+
+								public function import(string $filename): void
+								{
+									$records = $this->loadFile($filename);
+
+									$this->importData($records);
+								}
+							}
+
+							private function loadFile(string $filename): array
+							{
+									$records = [];
+									if (false !== $handle = fopen($filename, 'r')) {
+											while ($record = fgetcsv($handle)) {
+													$records[] = $record;
+											}
+									}
+									fclose($handle);
+
+									return $records;
+							}
+
+							private function importData(array $records)
+							{
+									try {
+											$this->db->beginTransaction();
+											foreach ($records as $record) {
+													$stmt = $this->db->prepare('INSERT INTO ...');
+													$stmt->execute($record);
+											}
+											$this->db->commit();
+									} catch (PDOException $e) {
+											$this->db->rollback();
+											throw $e;
+									}
+							}
+							</code>
+						</pre>
+            <p class="r-fit-text">
+              Quelles sont les 2 responsabilités de cette classe ?
+            </p>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text">SRP par l'exemple - Résolution</h2>
+            <pre data-id="code-animation">
+							<code class="hljs" data-trim>
+							&lt;?php
+							Class DataImporter {
+								public function __construct(
+									private FileLoader $loader,
+									private DataConnector $connector,
+								) {}
+
+								public function import(string $filename): void
+								{
+									foreach ($this->loader->load($filename) as $record) {
+											$this->connector->push($record);
+									}
+								}
+							}
+							</code>
+						</pre>
+            <p class="r-fit-text">
+              Les changements de format de donnée et de chargement de la donnée
+              ont été délégués à des abstractions. DataImporter a désormais
+              l'unique responsabilité de faire collaborer FileLoader et
+              DataConnector dans le but de charger dans une base de données les
+              données contenues dans un fichier.
+            </p>
+          </section>
+
+          <section data-background-color="black">
+            <h2 class="r-fit-text">O comme Open-Closed Principle</h2>
+            <blockquote>
+              Les classes d’un projet devraient être
+              <strong
+                >ouvertes à l’extension, mais fermées à la modification</strong
+              >.
+            </blockquote>
+            <p class="r-fit-text">
+              L’idée derrière ce principe est : ajouter de nouvelles
+              fonctionnalités ne devrait pas casser les fonctionnalités déjà
+              existantes.
+            </p>
+            <h3 class="r-fit-text">
+              Objectif : pouvoir enrichir les fonctionnalités d'un module sans
+              avoir à en modifier le comportement.
+            </h3>
+          </section>
+          <section data-background-color="black">
+            <h2>OCP par l'exemple</h2>
+            <pre data-id="code-animation">
+							<code class="hljs" data-trim>
+							&lt;?php
+							$importer = new DataImporter(
+								new CsvFileLoader(),
+								new MySQLConnector(),
+							);
+							$importer = new DataImporter(
+								new JsonFileLoader(),
+								new ElasticSearchConnector()
+							);
+							</code>
+						</pre>
+            <p class="r-fit-text">
+              L'exemple de résolution SRP montré précédemment est totalement
+              conforme au principe OCP. En effet, il est possible d'ajouter de
+              nouveaux formats de sérialisation et de nouveaux connecteurs sans
+              avoir à modifier la classe DataImporter.
+            </p>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text">L comme Liskov Substitution Principle</h2>
+            <blockquote>
+              Les classes d’un projet devraient être
+              <strong
+                >ouvertes à l’extension, mais fermées à la modification</strong
+              >.
+            </blockquote>
+            <p class="r-fit-text">
+              Il doit être possible de substituer une classe "parente" par l’une
+              de ses classes enfants (on dit aussi "dérivées"). En pratique dans
+              la vie quotidienne, c'est comme changer un pneu crevé d'une marque
+              X par un autre pneu d'une marque Y.
+            </p>
+            <h3 class="r-fit-text">
+              Objectif : généralise OCP à l'héritage de classes.
+            </h3>
+            <aside class="notes">
+              Ce principe a été formulé par Barbara Liskov et Jeannette Wing
+              dans l'article
+              <a
+                href="https://www.cs.cmu.edu/~wing/publications/LiskovWing94.pdf"
+                >Family Values: A Behavioral Notion of Subtyping [EN]</a
+              >.
+              <br />
+              Il ne porte que le nom de Barbara car elle avait déjà publié en
+              1987 un précéent travail intitulé
+              <a
+                href="https://pdfs.semanticscholar.org/36be/babeb72287ad9490e1ebab84e7225ad6a9e5.pdf"
+                >Data abstraction en hierarchy [EN]</a
+              >
+              de 1994.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2>LSP par l'exemple</h2>
+            <pre data-id="code-animation">
+							<code class="hljs" data-trim>
+							&lt;?php
+							abstract class AbstractLoader implements FileLoader {
+									public function load(string $filename): array {
+											if (!file_exists($file)) {
+													throw new \InvalidArgumentException(sprintf('%s does not exist.', $filename));
+											}
+
+											return [];
+									}
+							}
+
+							class CsvFileLoader extends AbstractLoader {
+									public function load(string $filename): array {
+											$records = parent::load($file);
+											// ...
+									}
+							}
+
+							</code>
+						</pre>
+            <p class="r-fit-text">
+              CsvFileLoader hérite de la classe abstraite AbstractLoader et
+              redéfinit sa méthode load. La signature de la méthode est
+              respectée ainsi que les types de retour.
+            </p>
+            <aside class="notes">
+              Le principe LSP est un principe de substitution de type. Il est
+              donc possible de substituer une classe parente par une classe
+              enfant sans que le comportement de l'application ne change.
+              <br />
+              Ici ce qui joue un rôle très important dans le respect du contrat,
+              c'est l'utilisation d'une Interface. Et justement nous allons voir
+              dans le prochain principe que les Interfaces sont utiles à plus
+              d'un titre.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text">I comme Interface Segregation Principle</h2>
+            <blockquote>
+              Vous ne devriez pas avoir à implémenter des méthodes dont vous
+              n’avez pas besoin
+            </blockquote>
+            <p class="r-fit-text">
+              Voyez le comme SRP appliqué aux interfaces cette fois.
+            </p>
+            <h3 class="r-fit-text">
+              Objectif : éviter d’avoir des interfaces aux multiples
+              responsabilités et de les redécouper en multiples interfaces qui
+              ont, elles, <strong>une seule responsabilité</strong>, quitte même
+              à les composer.
+            </h3>
+          </section>
+          <section data-background-color="black">
+            <h2>ISP par l'exemple</h2>
+            <pre data-id="code-animation">
+							<code class="hljs" data-trim>
+							&lt;?php
+							interface FileLoader {
+									public function load(string $filename): array;
+							}
+
+							interface FileDumper {
+									public function dump(string $filename): void;
+							}
+
+							interface File implements FileLoader FileDumper {
+							}
+							</code>
+						</pre>
+            <p class="r-fit-text">
+              Ici on a bien séparé les interface de chargement et d'écriture de
+              fichier dans 2 interfaces, on a même composé une nouvelle
+              interface File qui implémente les 2 autres. Ainsi c'est à la
+              carte.
+            </p>
+            <aside class="notes">
+              On voit ici l'un des grands atouts de la composition. Assez
+              souvent, même dans les langages objet qui supportent l'héritage,
+              il est utile de se demander si on ne veut pas utiliser la
+              composition à la place de l'héritage.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text">D comme Dependency Inversion Principle</h2>
+            <blockquote>
+              Les classes de haut niveau ne devraient pas dépendre directement
+              des classes de bas niveau, mais d’abstractions.
+            </blockquote>
+            <p class="r-fit-text">
+              Stipule qu'il faut programmer par rapport à des abstractions
+              plutôt que des implémentations.
+            </p>
+            <h3 class="r-fit-text">
+              Objectif : découpler au maximum les dépendances et les rendre
+              substituables. Ça ne vous parle toujours pas ? C'est normal,
+              procédons en quelques étapes.
+            </h3>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text">DIP par l'exemple - étape 1</h2>
+            <pre data-id="code-animation">
+							<code class="hljs" data-trim>
+							&lt;?php
+							class DataImporter
+							{
+									private $loader;
+									private $connector;
+
+									public function __construct()
+									{
+											$this->loader  = new CsvFileLoader();
+											$this->gateway = new DataConnector();
+									}
+							}
+							</code>
+						</pre>
+            <p class="r-fit-text fragment fade-up">
+              Ici on instancie les dépendances à l'intérieur de la classe. Cela
+              rend difficile l'extension et les tests. On dit qu'on a
+              <strong>un couplage fort</strong>.
+            </p>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text">DIP par l'exemple - étape 2</h2>
+            <pre data-id="code-animation">
+							<code class="hljs" data-trim>
+							&lt;?php
+							class DataImporter
+							{
+									public function __construct(
+										private CsvFileLoader $loader,
+										private DataConnector $connector,
+									) {}
+							}
+							</code>
+						</pre>
+            <p class="r-fit-text fragment fade-up">
+              Ici on permet aux dépendances d'être instanciées à l'extérieur, on
+              peut donc dire qu'elles sont <strong>injectables</strong> (tiens
+              tiens, ne serait-ce pas le injection de DIP?).
+            </p>
+            <p class="r-fit-text fragment fade-up">
+              Par contre... on dépend toujours de classes concrètes et non
+              d'abstraction, que pouvons-nous faire ?
+            </p>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text">DIP par l'exemple - étape 3</h2>
+            <pre data-id="code-animation">
+							<code class="hljs" data-trim>
+							&lt;?php
+							class DataImporter
+							{
+									public function __construct(
+										private FileLoader $loader,
+										private Connector $connector,
+									) {}
+							}
+							</code>
+						</pre>
+            <p class="r-fit-text fragment fade-up">
+              Ici les interfaces FileLoader et Connector favorisent l'injection
+              de n'importe quels objets implémentant ces dernières. Houra !
+            </p>
+          </section>
+          <section
+            data-background-color="black"
+            data-background="./images/solid-bg.jpg"
+            style="backdrop-filter: blur(40px); padding: 10px 20px"
+          >
+            <h2 style="margin-bottom: 0">SOLID</h2>
+            <h4 style="margin-top: 0">Ce qu'il faut retenir</h4>
+            <ul class="r-fit-text">
+              <li>
+                SOLID aide à <strong>découpler votre code</strong> et donc vous
+                aidera à un niveau de conception et d'expérience plus avancées à
+                le structurer en <strong>modules</strong> ainsi que de
+                formaliser leurs moyens de <strong>collaborer</strong>.
+              </li>
+              <li>
+                <strong>Les tests</strong> sont un excellent moyen de vérifier
+                que votre code respecte les principes SOLID.
+              </li>
+            </ul>
+          </section>
+          <section
+            data-background-color="black"
+            data-background="./images/solid-bg.jpg"
+            style="backdrop-filter: blur(40px); padding: 10px 20px"
+          >
+            <h2 style="margin-bottom: 0">SOLID</h2>
+            <h4 style="margin-top: 0">Pour aller plus loin</h4>
+            <p>
+              Pas de rapport direct avec SOLID... mais tout à fait dans la
+              lignée des bonnes pratiques de développement pour écrire du code
+              plus propre, plus lisible, les 9 règles
+              <strong>IN-DIS-PEN-SABLES</strong> de
+              <a href="https://williamdurand.fr/2013/06/03/object-calisthenics/"
+                >Object Calishtenics - William Durand</a
+              >
+            </p>
+          </section>
+        </section>
+        <section>
+          <section
+            data-background-color="black"
+            data-background="./images/stupid-bg.jpg"
+            style="backdrop-filter: blur(8px); padding: 20px"
+          >
+            <h2>Détectez</h2>
+            <h3>Quand une application est STUPID</h3>
+          </section>
+          <section data-background-color="black">
+            <h2>STUPID ?</h2>
+            <p class="r-fit-text">
+              On vient de voir un certain nombre de bonnes pratiques avec SOLID.
+              STUPID c'est comme le Wario de Mario, c'est exactement ce qu'il ne
+              faut pas faire !
+            </p>
+            <p class="r-fit-text">
+              Quand vous relisez du code et que vous identifiez des éléments
+              STUPID, ce sont autant d'indices (ou
+              <strong>"code smells"</strong> en anglais) que le code est de
+              qualité insuffisante.
+            </p>
+            <aside class="notes">
+              <p>
+                Le terme "code smell" est un terme qui vient de la communauté de
+                l'agilité. Il désigne un élément du code qui indique que quelque
+                chose ne va pas. Il peut s'agir d'une mauvaise pratique, d'une
+                dépendance cyclique, d'une duplication de code, etc.
+              </p>
+              <p>
+                Vous pourrez aussi entendre parler d'anti patterns, c'est un
+                concept très proche.
+              </p>
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2>Les 6 principes STUPID</h2>
+            <ol>
+              <li><strong>S</strong> comme <strong>Singleton</strong></li>
+              <li><strong>T</strong> comme <strong>Tight Coupling</strong></li>
+              <li><strong>U</strong> comme <strong>Untestability</strong></li>
+              <li>
+                <strong>P</strong> comme <strong>Premature Optimization</strong>
+              </li>
+              <li>
+                <strong>I</strong> comme <strong>Indescriptive Naming</strong>
+              </li>
+              <li><strong>D</strong> comme <strong>Duplication</strong></li>
+            </ol>
+          </section>
+          <section data-background-color="black">
+            <h2 style="margin-bottom: 0">S comme Singleton</h2>
+            <p class="r-fit-text" style="margin-top: 0; margin-bottom: 0">
+              Un singleton c'est une classe instanciable une et une seule fois
+            </p>
+            <pre data-id="code-animation">
+              <code class="hljs" data-trim data-line-numbers>
+              &lt;?php // Design pattern fortement déconseillé
+              class DatabaseConnection
+              {
+                  private static $instance;
+                  private function __construct() {}
+                  private function __clone() {}
+
+                  public static getInstance()
+                  {
+                      if(is_null(self::$_instance)) {
+                          self::$_instance = new DatabaseConnection();
+                      }
+
+                      return self::$_instance;
+                  }
+              }
+              </code>
+            </pre>
+            <aside class="notes">
+              <p>Le singleton pose 3 problèmes :</p>
+              <ol>
+                <li>
+                  On sent qu'on veut faire porter la responsabilité de limiter
+                  le nombre d'instances créées par la classe, c'est un peu en
+                  violation de SRP.
+                </li>
+                <li>
+                  On viole aussi l'injection de dépendance qui est rendue
+                  impossible et pousse à avoir des variables globales utilisées
+                  pour configurer l'instanciation du Singleton.
+                </li>
+                <li>
+                  Enfin, là où le Singleton est utilisé, on introduit un
+                  couplage fort car il n'est pas injecté dans le constructeur de
+                  la classe qui l'utilise bien sûr.
+                </li>
+              </ol>
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 style="margin-bottom: 0">T comme Tight Coupling</h2>
+            <p class="r-fit-text" style="margin-top: 0; margin-bottom: 0">
+              Si l’utilisation d’un objet nécessite la création ou l’utilisation
+              d’un autre objet, alors ils sont dits "fortement couplés".
+            </p>
+            <pre data-id="code-animation">
+              <code class="hljs" data-trim="spaces" data-line-numbers="3-13|19-25|34-40">
+              &lt;?php
+
+              // Option 1 : À éviter absolument !
+              class Database { ... }
+
+              class UserReposirory {
+                private Database $db;
+
+                public function __construct()
+                {
+                    $this->db = new Database();
+                }
+              }
+
+
+
+
+
+              // Option 2: À éviter car utilisation
+              // d'une classe concrète
+              class Database { ... }
+
+              class UserReposirory {;
+                public function __construct(private Database $db) {}
+              }
+
+
+
+
+
+
+
+
+              // Option 3: tout bon, on utilise une abstraction
+              // qui permet de poser un contrat
+              interface Database { ... }
+
+              class UserReposirory {
+                public function __construct(private Database $db) {}
+              }
+              </code>
+            </pre>
+            <aside class="notes">
+              Un couplage fort va limiter <strong>l’extensibilité</strong> de
+              vos applications et la <strong>réutilisation</strong> de vos
+              classes.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 style="margin-bottom: 0">U comme Untestability</h2>
+            <p class="r-fit-text">
+              Les deux précédentes sections illustrent bien ce principe. Un
+              couplage fort rend les tests plus difficiles (voire même
+              impossibles) à écrire.
+            </p>
+            <p class="r-fit-text">
+              Une pratique courante lorsqu'on teste est de substituer une
+              implémentation d'interface que l'on utiliserait en environnement
+              de production par une dédiée aux tests, par exemple une
+              implémentation qui retourne des valeurs prédéfinies.
+            </p>
+            <aside class="notes">
+              <p>
+                Lorsque vous écrivez des tests, vous devez pouvoir substituer
+                les dépendances de vos classes par des implémentations qui
+                permettent de tester le comportement de votre classe.
+              </p>
+              <p>
+                Si vous avez des dépendances fortement couplées, vous ne pourrez
+                pas faire cela.
+              </p>
+              <p>
+                On peut par exemple imagine créer une InMemoryDatabase pour les
+                tests qui remplacerait une MySQLDatabase que l'on utiliserait en
+                production.
+              </p>
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 style="margin-bottom: 0" class="r-fit-text">
+              P comme Premature Optimization
+            </h2>
+            <p class="r-fit-text">
+              Une resource machine coûte bien moins cher qu’une journée de
+              consulting d’un développeur. Il faut éviter de penser d’abord à
+              l’optimisation (dans la plupart des cas) et toujours
+              <strong>priviléger la lisibilité du code</strong>.
+            </p>
+            <p class="r-fit-text">
+              Enfin, quand il s'agit vraiment d'optimiser, il est plus sage de
+              mettre en place de l'observabilité sur la plateforme où l'on fait
+              tourner le code et de recourir à des outils de profilage, tels que
+              <a href="https://www.blackfire.io/">blackfire</a> par exemple.
+            </p>
+            <aside class="notes"></aside>
+          </section>
+          <section data-background-color="black">
+            <h2 style="margin-bottom: 0" class="r-fit-text">
+              I comme Indescriptive Naming
+            </h2>
+            <p class="r-fit-text">
+              <strong>Évitez d'utiliser acronymes ou abréviations</strong> quand
+              vous nommez des variables, classes ou espaces de car tout le monde
+              n'en connaît pas forcément le sens.
+            </p>
+            <p class="r-fit-text">
+              Il est recommandé de
+              <strong>passer du temps</strong> à trouver le bon nom pour un
+              concept. Vous pouvez même
+              <strong>sonder vos collègues ou votre manager</strong> pour
+              trouver le nom le plus approprié ou vérifier que l'une de vos
+              propositions leur parle.
+            </p>
+            <p class="r-fit-text">
+              Enfin, un nom trop long ou compliqué peut-être un très bon code
+              smell ! En effet on se dit rapidement qu'on viole SRP.
+            </p>
+            <aside class="notes"></aside>
+          </section>
+          <section data-background-color="black">
+            <h2 style="margin-bottom: 0">D comme Duplication</h2>
+            <p class="r-fit-text">
+              Ce n'est pas souvent une bonne idée de dupliquer du code. Car
+              forcément si vous devez modifier une partie de votre code, vous
+              devez le faire à plusieurs endroits, ce qui n'est pas très SOLID.
+            </p>
+            <p class="r-fit-text">
+              <strong>Attention :</strong> il ne faut pas confondre duplication
+              de code et avec réutilisation abusive de code. Par exemple, vous
+              pouvez dans le cadre d'un project e-commerce avoir une classe
+              Product dans un module de Catalogue produit d'une part et dans un
+              autre module d'expédition d'autre part. Mutualiser la classe
+              Product n'est pas forcément une bonne idée car même si elle porte
+              le même nom, elle a des propriétés et responsabilités très
+              distinctes selon le module.
+            </p>
+            <aside class="notes"></aside>
+          </section>
+          <section data-background-color="black">
+            <h2 style="margin-bottom: 0">D comme Duplication</h2>
+            <p>Il existe 2 règles qui peuvent vous aider :</p>
+            <ol class="r-fit-text">
+              <li>
+                <strong>DRY (Don't repeat yourself) : </strong> si un bloc
+                fonctionel est dupliqué isolez-le dans une fonction/classe/trait
+                et réutilisez-le. Les IDE ont souvent des fonctionnalités pour
+                vous aider à extraire/remanier.
+              </li>
+              <li>
+                <strong>KISS (Keep It Simple Stupid) : </strong>refactorisez
+                régulièrement pour casser la complexité, et surtout...
+                n'anticipez pas trop d'abstractions ! Bon ok dans ce cours le
+                souci... c'est que vous allez vouloir mettre en application tout
+                ce que l'on a vu et abstraire à tort et à raison. Vous verrez ça
+                passera avec l'expérience ;)
+              </li>
+            </ol>
+            <aside class="notes"></aside>
+          </section>
+        </section>
+        <section>
+          <section
+            data-background-color="black"
+            data-background="./images/design-pattern-bg.jpg"
+            style="backdrop-filter: blur(4px); padding: 20px"
+          >
+            <h2>Résoudre les problèmes de conception</h2>
+            <h3>Avec les design patterns</h3>
+          </section>
+          <section data-background-color="black">
+            <h2>Design Pattern ?</h2>
+            <ul>
+              <li>Créationels</li>
+              <li>Structuraux</li>
+              <li>Comportementaux</li>
+            </ul>
+          </section>
+          <section data-background-color="black">
+            <h2>1. Designs Patterns Créationels</h2>
+            <p>TBD</p>
+          </section>
+          <section data-background-color="black">
+            <h2>Le Design Pattern Factory Method</h2>
+            <p>TBD</p>
+          </section>
+          <section data-background-color="black">
+            <h2>Le Design Pattern Prototype</h2>
+            <p>TBD</p>
+          </section>
+          <section data-background-color="black">
+            <h2>Le Design Pattern Builder</h2>
+            <p>TBD</p>
+          </section>
+          <section data-background-color="black">
+            <h2>Le Design Pattern Singleton</h2>
+            <p>TBD</p>
+          </section>
+          <section data-background-color="black">
+            <h2>2. Designs Patterns Structuraux</h2>
+            <p>TBD</p>
+          </section>
+          <section data-background-color="black">
+            <h2>Le Design Pattern Adapter</h2>
+            <p>TBD</p>
+          </section>
+          <section data-background-color="black">
+            <h2>Le Design Pattern Composite</h2>
+            <p>TBD</p>
+          </section>
+          <section data-background-color="black">
+            <h2>Le Design Pattern Decorator</h2>
+            <p>TBD</p>
+          </section>
+          <section data-background-color="black">
+            <h2>3. Designs Patterns Comportementaux</h2>
+          </section>
+          <section data-background-color="black">
+            <h2>Le Design Pattern Observer ou Event Dispatcher</h2>
+            <p>TBD</p>
+          </section>
+          <section data-background-color="black">
+            <h2>Le Design Pattern Strategy</h2>
+            <p>TBD</p>
+          </section>
+          <section data-background-color="black">
+            <h2>Le Design Pattern State</h2>
+            <p>TBD</p>
+          </section>
+        </section>
+        <section>
+          <section
+            data-background-color="black"
+            data-background="./images/qa-bg.jpg"
+            style="backdrop-filter: blur(4px); padding: 20px"
+          >
+            <h2>Ajoutez du contrôle qualité</h2>
+          </section>
+          <section data-background-color="black">
+            <h2>Intro - TBD</h2>
+          </section>
+        </section>
+        <section>
+          <section
+            data-background-color="black"
+            data-background="./images/ld-bg.jpg"
+            style="backdrop-filter: blur(4px); padding: 20px"
+          >
+            <h2>Rendez votre documentation vivante</h2>
+          </section>
+          <section data-background-color="black">
+            <h2>Intro - TBD</h2>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/mermaid/mermaid.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealMermaid,
+          RevealNotes,
+          RevealZoom,
+        ],
+      });
+    </script>
+  </body>
+</html>
