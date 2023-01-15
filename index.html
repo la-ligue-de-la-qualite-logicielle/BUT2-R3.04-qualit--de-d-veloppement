@@ -1951,12 +1951,15 @@
           </section>
           <section data-background-color="black">
             <h2>Factory</h2>
-            <p>On crée une classe dont la seule responsabilité est de fabriquer des classes se conformant à une interface. Exemple : <a href="https://github.com/symfony/symfony/blob/991c2bad292c4c4af17328c331507a5a7789512c/src/Symfony/Component/Lock/LockFactory.php">Symfony LockFactory</a></p>
+            <p class="r-fit-text">
+              On crée une classe dont la seule responsabilité est de fabriquer des classes se conformant à une interface.
+              Exemple : <a href="https://github.com/symfony/symfony/blob/991c2bad292c4c4af17328c331507a5a7789512c/src/Symfony/Component/Lock/LockFactory.php">Symfony LockFactory</a>
+            </p>
             <aside class="notes"></aside>
           </section>
           <section data-background-color="black">
             <h2>Builder</h2>
-            <p>Permet de créer un objet ou une structure d'objet par l'intermédiaire d'une classe qui
+            <p class="r-fit-text">Permet de créer un objet ou une structure d'objet par l'intermédiaire d'une classe qui
               va construire l'objet étape par étape. Exemple : <a href="https://github.com/symfony/symfony/blob/991c2bad292c4c4af17328c331507a5a7789512c/src/Symfony/Component/Workflow/DefinitionBuilder.php#L23-L43">Symfony Workflow DefinitionBuilder</a>
             </p>
             <aside class="notes">
@@ -2031,7 +2034,7 @@
           </section>
           <section data-background-color="black">
             <h2>Bridge</h2>
-            <p>
+            <p class="r-fit-text">
               Dès que l'on souhaite faire varier une abstraction en fonction de sa dépendance, on peut utiliser le Bridge.
               Par exemple <a href="https://refactoring.guru/design-patterns/bridge/php/example#example-1">comment rendre une même structure de données dans différent formats</a>
             </p>
@@ -2046,7 +2049,7 @@
           </section>
           <section data-background-color="black">
             <h2>Composite</h2>
-            <p>Dès que l'on a une structure d'objets de type arbre, il es courant de l'utiliser pour se faciliter la vie.
+            <p class="r-fit-text">Dès que l'on a une structure d'objets de type arbre, il es courant de l'utiliser pour se faciliter la vie.
               Par exemple <a href="https://refactoring.guru/design-patterns/composite/php/example#example-1">comment créer le rendu d'un formulaire HTML</a>
             </p>
             <aside class="notes">
@@ -2141,7 +2144,7 @@
           </section>
           <section data-background-color="black">
             <h2>Facade</h2>
-            <p>
+            <p class="r-fit-text">
               On viole intentionnellement des principes SOLID avec la façade dans un but de simplification, pour exposer simplemnt un sous système complexe.
               Par exemple, <a href="https://refactoring.guru/design-patterns/facade/php/example#example-1">Comment simplifier l'usage d'une API : télécharger une vidéo Youtube</a>
             </p>
@@ -2154,7 +2157,7 @@
           </section>
           <section data-background-color="black">
             <h2>Flyweight</h2>
-            <p>
+            <p class="r-fit-text">
               Lorsque l'on a besoin d'optimiser/mutualiser des ressources en mémoire, très proche des principes
               de mémoization qu'on trouve en programmation foncionnelle, ici adapté à la programmation objet.
               <a href="https://refactoring.guru/design-patterns/flyweight">Pour aller plus loin</a>
@@ -2187,63 +2190,201 @@
           </section>
           <section data-background-color="black">
             <h2>Chain Of Responsibility</h2>
-            <p>TBD</p>
+            <p class="r-fit-text">Ce patron permet de chaîner un traitement à travers une liste de gestionnaires (handlers) :
+              chaque handler s'il <strong>ne peut pas traiter</strong> l'objet passé transmet au handler suivant.
+            </p>
+            <p class="r-fit-text">
+              À l'opposé, vous rencontrerez assez souvent le <a href="https://refactoring.guru/design-patterns/chain-of-responsibility/php/example#example-1">concept de middleware</a> qui passe le traitement
+              au suivant tant qu'il évalue que l'application <strong>pourra traiter</strong> la demande.
+            </p>
+            <aside class="notes">
+              En php <a href="https://www.php-fig.org/psr/psr-15/">PSR-15</a> est un bon exemple de middleware, qu'on peut considérer comme une chain-of-responsibility.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2>Command</h2>
+            <p class="r-fit-text">Ce patron sous sa forme historique dans le livre du gang of four consiste à avoir :</p>
+            <ul class="r-fit-text">
+              <li>1 classe de commande qui <strong>encapsule les données d'une requête à traiter</strong></li>
+              <li>1 <strong>méthode execute</strong> dans la classe de commande qui permet que la commande puisse s'éxécuter</li>
+              <li>En bonus, méthodes et/ou propriétés pour reporter le statut d'exécution</li>
+            </ul>
             <aside class="notes">
             </aside>
           </section>
           <section data-background-color="black">
             <h2>Command</h2>
-            <p>TBD</p>
+            <p class="r-fit-text">Concept devenu plus propre avec CQS/CQRS :</p>
+            <ul class="r-fit-text">
+              <li>1 classe de commande qui encapsule les données d'une requête à traiter</li>
+              <li>1 classe de gestionnaire (command handler) exécute la commande</li>
+              <li>Les deux classes étant reliées par un service (command bus)</li>
+            </ul>
             <aside class="notes">
+
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2>Digression <a href="https://martinfowler.com/bliki/CQRS.html">CQS/CQRS</a></h2>
+            <image style="height: 60vh" src="./images/cqs.png" />
+            <aside class="notes">
+              <p class="r-fit-text">
+              CQS comme <strong>C</strong>ommand <strong>Q</strong>uery <strong>S</strong>eparation et
+              CQRS <strong>C</strong>ommand <strong>Q</strong>uery <strong>R</strong>esponsibility <strong>S</strong>egregation.
+              </p>
+              <p class="r-fit-text">
+              C'est un peu une mise à l'échelle du principe SRP : on considère que les lectures et les écritures dans une
+              application sont des cas d'usages différents. On peut donc séparer les commandes (écritures) des requêtes (lectures).
+              </p>
+              <p class="r-fit-text">
+              Cette considération se vérifie car dans une application très souvent les écritures sont plus rares que les lectures.
+              Pour vous donner un ordrer d'idée on a très souvent une répartition avec 10% d'écritures et 90% de lectures.
+              </p>
+              <p class="r-fit-text">
+              Si vous utilisez un framework tel que Symfony avec le composant messenger,
+              <a href="https://symfony.com/doc/current/messenger.html#multiple-buses-command-event-buses">tout est documenté pour mettre en place facilement au moins CQS.</a>
+              Vous retrouvez dans d'autres langages tels que Java avec <a href="https://developer.axoniq.io/axon-framework/overview">Axon Framework associé à Spring Boot</a>.
+              </p>
             </aside>
           </section>
           <section data-background-color="black">
             <h2>Iterator</h2>
-            <p>TBD</p>
+            <p class="r-fit-text">Permet simplement d'extraire la logique de parcours d'une liste ou d'une structure dans une classe dédiée.</p>
+            <p class="r-fit-text">En php et dans beaucoup de langages des interfaces sont déjà proposées pour vous guider, telles que
+              <a href="https://www.php.net/manual/fr/class.iterator.php">Iterator</a>, ou
+              <a href="https://www.php.net/manual/fr/class.iteratoraggregate.php">IteratorAggregate</a>
+            </p>
             <aside class="notes">
+              La classe d'iterator est agnostique de ce qu'elle manipule, elle sait juste comment parcourir la structure (SRP for the win).
+              <a href="https://refactoring.guru/design-patterns/iterator/php/example#example-1">Un exemple de parcours d'un fichier CSV sur code guru</a>.
             </aside>
           </section>
           <section data-background-color="black">
             <h2>Mediator</h2>
-            <p>TBD</p>
+            <p class="r-fit-text">Le médiateur est une sorte de <strong>chef d'orchestre entre plusieurs services</strong> afin de rendre plus claire la manière dont ils s'articulent.</p>
+            <p class="r-fit-text">
+              Un très bon exemple est <a href="https://refactoring.guru/design-patterns/mediator/php/example#example-1">la réalisation d'un event dispatcher</a>.
+              Très souvent des librairies/framework vous fournissent déjà des composants réutilisables reposants sur le design pattern de mediator.
+            </p>
             <aside class="notes">
             </aside>
           </section>
           <section data-background-color="black">
             <h2>Memento</h2>
-            <p>TBD</p>
+            <p class="r-fit-text">
+              Dans beaucoup de langages, le meilleur moyen de le mettre en place est d'utiliser la sérialisation/désérialisation.
+              Elle permet de sauvegarder l'état d'un objet et de le restaurer à tout moment.
+              On évitee de violer OCP en mettant inutilement des getters et setters sur les propriétés de vos objets.
+            </p>
+            <p class="r-fit-text">
+              C'est un bon moyen de mettre en place un undo/redo dans une application par exemple, en sauvegardant les états successifs
+              de l'application (historique) et en étant donc capable de restaurer par rapport à un état précis.
+            </p>
             <aside class="notes">
             </aside>
           </section>
           <section data-background-color="black">
             <h2>Observer</h2>
-            <p>TBD</p>
+            <p class="r-fit-text">
+              Nous avons déjà vu un exemple d'Observer avec l'event dispatcher dans le pattern du mediator.
+              Il s'agit simplement de notifier plusieurs objets (Subscribers) d'événements survenant dans notre application.
+            </p>
+            <p class="r-fit-text">
+              C'est un bon moyen au sein d'une application de séparer les responsabilités et de rendre plus
+              claire la manière dont les objets s'articulent. En effet on peut facilement découpler, mettre des frontières entre des concepts différents.
+              Et donc avec une bonne pratique, éviter l'effet spaghetti dans notre code.
+              <a href="https://refactoring.guru/design-patterns/observer/php/example#example-1">Un exemple d'observer sur code guru</a>
+            </p>
             <aside class="notes">
+              Pour aller plus loin : certaines architectures d'applications reposent sur l'event sourcing,
+              qui consiste à stocker l'historique des événements permettant de restaurer l'état d'une application à tout moment.
+              Quand on y pense, c'est assez séduisant car nous avons tendance à toujours vouloir stocker des états dans la base de données.
+              Un état est une représentation d'un moment donné, et si on peut stocker l'historique des événements, on peut restaurer l'état à tout moment.
             </aside>
           </section>
           <section data-background-color="black">
             <h2>State</h2>
-            <p>TBD</p>
+            <p class="r-fit-text">
+              À utiliser seulement quand vous avez besoin de gérer un grand nombre d'états différents dans une classe et que vous
+              souhaitez déléguer la gestion de ces états à une autre classe.
+            </p>
+            <p class="r-fit-text">
+              Un bon exemple est la gestion des états d'une commande dans un système de paiement, ou encore un flux de publication
+              d'articles (draft, reviewing, published, archived, etc.).
+              Le composant <a href="https://symfony.com/doc/current/components/workflow.html">Workflow de Symfony</a> est un bon exemple d'implémentation de ce pattern.
+            </p>
             <aside class="notes">
             </aside>
           </section>
           <section data-background-color="black">
             <h2>Strategy</h2>
-            <p>TBD</p>
+            <p class="r-fit-text">
+              À utiliser quand vous devez mettre en place un algorithme dans des contextes différents.
+              Par exemple de la plannification de trajet (l'algorithme) appliqué à un véhicule (contexte).
+              Ce contexte va varier selon le véhicule, et donc l'algorithme de plannification de trajet va varier selon le véhicule.
+            </p>
+            <p class="r-fit-text">
+              Vous crééz donc une interface de stratégie commune à toutes les variantes de l'algorithme, et vous pouvez ainsi implémenter
+              les algorithmes dans des classes différentes, et les passer en paramètre à votre contexte.
+              <a href="https://refactoring.guru/design-patterns/strategy/php/example#example-0">Un exemple de stratégies de tri ou filtrage.</a>
+            </p>
             <aside class="notes">
             </aside>
           </section>
           <section data-background-color="black">
             <h2>Template Method</h2>
-            <p>TBD</p>
+            <p class="r-fit-text">
+              Le but est d'abstraire les étapes de traitement d'un algorithme qu'on peut dériver.
+              On fournit ainsi un cadre réutilisable pour créer des variantes.
+            </p>
+            <p class="r-fit-text">
+              Au minimum on a une classe abstraite qui définit les étapes de l'algorithme, et des classes concrètes qui vont implémenter.
+              On peut même aller jusqu'à fournir quelques implémentations concrètes de base.
+              <a href="https://refactoring.guru/design-patterns/template-method/php/example#example-0">Un exemple de template method sur code guru</a>
+            </p>
+            <p class="r-fit-text">
+              À l'inverse de Strategy, Template Method repose sur l'héritage, et non sur la composition, ce qui est moins flexible en général.
+            </p>
             <aside class="notes">
             </aside>
           </section>
           <section data-background-color="black">
             <h2>Visitor</h2>
-            <p>TBD</p>
+            <p class="r-fit-text">
+              Pattern très puissant qui permet d'ajouter de nouveaux comportements sur une hiérarchie de classe sans modifier les classes elles-mêmes.
+              Quand on parle de comportements, il vaut mieux qu'ils soient suffisamment éloignés de la logique métier de ces classes car sinon on risque
+              de vite overengineerer notre code.
+            </p>
+            <p class="r-fit-text">
+              Totalement SRP et OCP compliant. Les seules limites c'est qu'il faut étendre le visiteur lorsque la hiérarchie de classe change et qu'il faut
+              qu'il aient accès aux informations nécessaires de la hiérarchie de classe.
+            </p>
+            <p class="r-fit-text">
+              Par exemple, on peut imaginer un visiteur capable de produire un rapport sur les objets visités.
+              <a href="https://refactoring.guru/design-patterns/visitor/php/example#example-0">Un exemple sur code guru</a>
+            </p>
             <aside class="notes">
             </aside>
+          </section>
+          <section
+            data-background-color="black"
+          >
+            <h2 style="margin-bottom: 0">Design patterns</h2>
+            <h3>Ce qu'il faut retenir</h3>
+            <ul class="r-fit-text">
+              <li>
+                <strong>Ne pas utiliser de design pattern pour le fun</strong>.
+                Il faut toujours garder à l'esprit que le but est de produire du code lisible, maintenable et évolutif.
+                l'over engineering est autant votre ennemi que le code spaghetti.
+              </li>
+              <li>
+                Bien choisir les patterns à utiliser. Il y en a beaucoup, et il faut savoir les utiliser au bon moment.
+              </li>
+              <li>
+                Plutôt que de les réimplémenter, utilisez ceux qui sont déjà disponibles dans votre framework,
+                qui sont souvent été testés et maintenus et donc d'excellente qualité.
+              </li>
+            </ul>
           </section>
         </section>
         <section>
