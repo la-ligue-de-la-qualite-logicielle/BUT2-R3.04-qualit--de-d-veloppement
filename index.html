@@ -2395,10 +2395,261 @@
           >
             <h2>Ajoutez du contrôle qualité</h2>
             <aside class="notes">
+              Sondage : quels outils de contrôle qualité utilisez-vous ? Quels moyens avez-vous déjà utilisé
+              pour vous assurer qu'un code est de qualité ? Fonctionne comme attendu ?
             </aside>
           </section>
           <section data-background-color="black">
-            <h2>Intro - TBD</h2>
+            <h2>La pyramide des tests</h2>
+            <image src="./images/pyramide_des_tests.png" />
+            <aside class="notes">
+              <a href="https://en.wikipedia.org/wiki/Mike_Cohn">Mike Cohn</a>, l'un des contributeurs de la méthode
+              de développement Scrum et fondateur de l'alliance Scrum a introduit ce concept en 2009 dans son livre
+              <a href="https://www.amazon.fr/Cohn-Succeeding-Agile-Mike/dp/0321579364">Succeeding with Agile</a>.
+              Elle introduit différentes catégories de tests et les recommande en fonction de leur coût et de leur valeur.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text">Anti pattern : cornet de glace</h2>
+            <image src="./images/cornet_de_glace.png" />
+            <aside class="notes">
+              On l'appelle aussi la pyramide inversée. C'est un anti pattern car on a a beaucoup
+              plus de tests coûteux à écrire et à maintenir, et longs à exécuter. Si l'on devait résumer, plus on avance avec les meilleures
+              intentions du monde et plus on se tir une balle dans le pied.
+              <a href="https://youtu.be/jny4rGj4w88">Vidéo de 10 minutes qui développe un peu plus le sujet de la pyramide et du cornet</a>.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2>Pyramide réactualisée</h2>
+            <ol>
+              <li>Analyse statique, de structure</li>
+              <li>Tests unitaires</li>
+              <li>Tests d'intégration et API</li>
+              <li>Tests de bout en bout (e2e / End To End)</li>
+              <li>Tests d'approbation</li>
+              <li>Tests de charge et de sécurité</li>
+            </ol>
+            <aside class="notes">
+              Les pratiques et langages de développement ont évolué depuis 2009.
+              Voici une pyramide plus contemporaine, nous allons voir comment on peut l'appliquer à nos projets.
+              Le premier élément n'entre normalement pas dans la pyramide car on ne peut pas parler tout à fait de tests,
+              cependant c'est un peu le niveau zéro.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2>Analyse statique, de structure</h2>
+            <aside class="notes">
+              Il existe des outils qui permettent d'analyser le code statiquement, c'est à dire sans l'exécuter.
+              Ils permettent de détecter des erreurs de syntaxe, des erreurs de logique, des erreurs de sécurité, des erreurs de performance.
+
+              Ils se sont popularisés avec l'arrivée des langages de programmation statiquement typés comme Java, C# ou encore PHP puis JavaScript avec TypeScript.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2>Analyse statique</h2>
+            <p class="r-fit-text">Détecte (parfois, corrige automatiquement)<br/><strong>sans éxécuter le code</strong> les erreurs de :</p>
+            <ul class="r-fit-text">
+              <li>Syntaxe et mise en forme, code mort :
+                <a href="https://prettier.io/">prettier</a>,
+                <a href="https://cs.symfony.com/">php cs fixer</a>,
+                <a href="https://rome.tools/">rome</a>,
+                <a href="https://pylint.readthedocs.io/en/latest/">pylint</a>,
+                ...
+              </li>
+              <li>Logique : <a href="https://www.typescriptlang.org/">typescript</a>, <a href="https://phpstan.org/">phpstan</a>, <a href="https://pmd.github.io/latest/">pmd</a></li>
+              <li>Sécurité : détection des mauvaises pratiques qui conduisent à des failles (ex: XSS, injections Shell, SQL, etc.)</li>
+              <li>Performance : certains outils ci-dessus, sinon on utilise au runtime des APM tels que <a href="https://www.blackfire.io/">blackfire</a> par ex.</li>
+            </ul>
+            <aside class="notes">
+              Sur le volet sécurité, il existe un catalogue publique des failles recensées,
+              les <a href="https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=symfony">Common Vulnerabilities & Exposures</a> ou CVE.
+
+              Il existe égalemet l'organisme <a href="https://owasp.org/www-project-top-ten/">OWASP</a> qui recensce et classe les failles
+              les plus courantes, et publie des recommandations pour les éviter.
+
+              Ces outils d'analyse statique savent faire le lien entre l'ensemble des fichiers dans votre code sans vraiment
+              comprendre ce qu'ils font ou comment vous avez décidé de les organiser.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2>Analyse de structure</h2>
+            <p>Pour maintenir une architecture propre</p>
+            <p>Des outils tels que <a href="https://qossmic.github.io/deptrac/">Deptrac</a>.</p>
+            <aside class="notes">
+              Contrairement aux outils d'analyse statique de code, ici on s'intérresse à catégoriser les fichiers de code
+              et respecter une architecture. On peut par exemple interdire les dépendances entre certains fichiers.
+
+              On a le droit de violer ces règles mais il faut alors les documenter et les justifier, ainsi si c'était une contraction de dette technique,
+              il faudra la rembourser en remédiant à cette violation de règle notée, on ne cache rien sous le tapis !
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 style="margin-bottom: 0;">Tests unitaires</h2>
+            <p class="r-fit-text">
+              Vérifient le bon fonctionnement d'une fonction ou d'une méthode.
+              <br/>Avec des outils tels que
+              <a href="https://junit.org/">junit</a>,
+              <a href="https://phpunit.de/">phpunit</a>,
+              <a href="https://docs.pytest.org/en/latest/">pytest</a>,
+              <a href="https://jestjs.io">jest</a>,
+              ...
+            </p>
+            <pre data-id="code-animation">
+							<code class="hljs">&lt;?php
+use PHPUnit\Framework\TestCase;
+
+class StackTest extends TestCase
+{
+    public function testPushAndPop()
+    {
+        $stack = [];
+        $this->assertSame(0, count($stack));
+
+        array_push($stack, 'foo');
+        $this->assertSame('foo', $stack[count($stack)-1]);
+        $this->assertSame(1, count($stack));
+    }
+}
+							</code>
+            </pre>
+            <aside class="notes">
+              Ils étaient loin d'être systématiques dans les années 2000, mais ils sont devenus incontournables aujourd'hui.
+              Ils se sont démocratisés avec XP (Extreme Programming) à la fin des années 1990. Puis à partir de 2005
+              avec <a href="https://fr.wikipedia.org/wiki/Test_driven_development">TDD (Test Driven Development)</a>.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text" style="margin-bottom: 0;">Tests d'intégration et API</h2>
+            <p class="r-fit-text">
+              Vérifient le bon fonctionnement de vos contrats applicatifs,
+              c'est à dire un ensemble de services répondant à une fonctionnalité utilisateur final.
+            </p>
+            <p class="r-fit-text">
+              On parle aussi de tests de <strong>comportement</strong>, avec des outils tels que
+              <a href="https://cucumber.io/docs/installation/java/">Cucumber JVM</a>,
+              <a href="https://docs.behat.org">Behat</a>,
+              <a href="https://cucumber.io/docs/installation/javascript/">Cucumber JS</a>,
+              <a href="https://behave.readthedocs.io">Behave</a>,
+              ...
+            </p>
+            <pre data-id="code-animation">
+							<code class="hljs" data-trim data-line-numbers="2-15|17-26">
+              Feature: Register a vehicle
+              In order to follow many vehicles with my application
+              As an application user
+              I should be able to register my vehicle
+
+              Scenario: I can register a vehicle
+                  Given my fleet
+                  And a vehicle
+                  When I register this vehicle into my fleet
+                  Then this vehicle should be part of my vehicle fleet
+							</code>
+            </pre>
+            <aside class="notes">
+              Pour faire un lien avec ce que l'on a vu précédemment, les designs pattern vous faciliteront
+              la vie pour écrire des tests d'intégration.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text" style="margin-bottom: 0;">Tests de bout en bout (e2e / End To End)</h2>
+            <p class="r-fit-text">
+              Vérifient qu'une application (web, mobile, ...) se comporte comme prévu, du début à la fin.
+            </p>
+            <p class="r-fit-text">
+              Avec des outils tels que
+              <a href="https://www.selenium.dev/">Selenium</a>,
+              <a href="https://www.cypress.io/">Cypress</a>,
+              <a href="https://playwright.dev/">Playwright</a>,
+              <a href="https://appium.io/">Appium</a>,
+              <a href="https://wix.github.io/Detox/">Detox</a>,
+              ...
+            </p>
+            <aside class="notes">
+              Vu que ce sont les tests les plus coûteux (en temps et en ressources), ils sont à utiliser avec parcimonie.
+              À relativiser cependant avec les mêmes tests manuels, qui sont plus coûteux encore.
+              On priorisera toujours de couvrir le chemin critique d'une application (par exemple, l'inscription d'un utilisateur, le tunnel de paiement, ...).
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 style="margin-bottom: 0;">Tests d'approbation</h2>
+            <p class="r-fit-text">
+              Ou Approval Tests, reposent essentiellement sur la comparaison de fichiers textes, via des création de snapshots.
+              Avec des outils tels que <a href="https://approvaltests.com/">Approval Tests</a>, mais beaucoup d'outils de tests unitaires proposent au moins en partie cette fonctionnalité.
+            </p>
+            <p class="r-fit-text">
+              Particulièrement utile avant de se lancer dans des refactoring de code, encore plus lorsqu'il est legacy (code hérité).
+            </p>
+            <p class="r-fit-text">
+              Vous pourrez aussi entendre, Golden Master, Snaphot Tests, Locking Tests, Regression Tests, ... pour parler de ces tests.
+            </p>
+            <aside class="notes">
+              <p>
+                <strong>Attention</strong> : c'est rarement une bonne idée de conserver ces tests dans le code source car la comparaison
+              de snapshots dans le temps deviendra fragile.
+              </p>
+              <p>
+                Voyez-les plutôt comme un filet de sécurité pour vous aider à faire des refactorings qui vous semblent risqués.
+              </p>
+              <p>
+                Pour aller plus loin je vous recommande fortement cette vidéo de Devoxx France 2022 :
+                <a href="https://youtu.be/r2XMwAUqZBA">Architecturoplastie hexagonale d’un backend Node.js (Jordan Nourry, Adrien Joly, Julien Topçu)</a>.
+              </p>
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text" style="margin-bottom: 0;">Tests de charge et de sécurité</h2>
+            <p class="r-fit-text">
+              Le <strong>test de charge</strong> (load testing) consiste à mesure la performance d'une application, le plus souvent en mesurant les temps de réponse
+              en fonction de la sollicitaton. Avec des outils tels que :
+              <a href="https://www.jmeter.apache.org/">JMeter</a>,
+              <a href="https://gatling.io/">Gatling</a>,
+              <a href="https://www.k6.io/">k6</a>,
+              <a href="https://locust.io/">Locust</a>,
+            </p>
+            <p class="r-fit-text">
+              Le <strong>test de sécurité</strong> ou <strong>pentest</strong> (penetration testing) consiste à tester les failles de sécurité d'une application,
+              le plus souvent en simulant des attaques. Un <a href="https://github.com/enaqx/awesome-pentest">dépôt Github</a>
+              pour se sensibiliser sur le sujet, ouils et techniques.
+            </p>
+            <aside class="notes">
+              <p>
+                L'utilisation de plateformes cloud avec des ressources serverless au capacité de mise à l'échelle pratiquement
+                infinies et instantannées telles que <a href="https://aws.amazon.com/fr/lambda/">AWS Lambda</a> ou
+                <a href="https://azure.microsoft.com/fr-fr/services/functions/">Azure Functions</a> ont minimisé la nécessité de
+                tester la charge d'une application : elle tiendra le prix qu'on est prêt à payer.
+              </p>
+              <p>
+                Pour les pentests, il est toujours recommandé de faire appel à des experts qui délivreront un rapport de sécurité
+                avec les niveaux de criticité et les recommandations d'amélioration. Un pentest coûte très souvent quelques
+                dizaines de milliers d'euros. Il est donc important de bien définir les objectifs et les attaques à simuler.
+              </p>
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text" style="margin-bottom: 0;">Pyramide de tests</h2>
+            <p>Ce qu'il faut retenir</p>
+            <ul class="r-fit-text">
+              <li>Les tests unitaires sont les plus rapides à écrire et à maintenir</li>
+              <li>Essayez d'écrire les tests d'abord, puis le code, pour vous aider à mieux concevoir</li>
+              <li>Essayez de ne pas tester deux fois la même fonctionnalité avec des des types de tests différents ou dans dans des tests d'intégration distincts.</li>
+            </ul>
+            <aside class="notes">
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text" style="margin-bottom: 0;">Pour aller plus loin</h2>
+            <ul class="r-fit-text">
+              <li>Assurez-vous d'avoir les extensions de votre éditeur de code qui vous aident à formatter votre code, détecter des erreurs et tester facilement.</li>
+              <li>Mettez en place une intégration continue :
+                <a href="https://docs.github.com/fr/actions">Github Actions</a>,
+                <a href="https://www.jenkins.io/">Jenkins</a>,
+                ...
+              </li>
+              <li>Perfectionnez-vous en BDD (Behavioral Driven Development) avec <a href="https://youtu.be/Kdi3BtO3ONY">cette vidéo</a>.</li>
+            </ul>
+            <aside class="notes">
+            </aside>
           </section>
         </section>
         <section>
@@ -2410,7 +2661,97 @@
             <h2>Rendez votre documentation vivante</h2>
           </section>
           <section data-background-color="black">
-            <h2>Intro - TBD</h2>
+            <h2 class="r-fit-text">Rendez votre documentation vivante</h2>
+            <p>
+              La documentation la plus à jour, c'est le code.
+            </p>
+            <p class="fragment fade-up">
+              ... mais vous ne pouvez pas exiger d'une
+              équipe tierce (interne ou externe) de lire le code pour comprendre comment utiliser
+              votre API par exemple.
+            </p>
+            <aside class="notes">
+              On est face à un dilemme : comment s'assurer que la documentation reste à jour en même temps que le code ?
+              La solution la plus simple est de générer la documentation à partir du code.
+              Mais qu'est-ce qu'on entend par "générer", qu'est-ce qu'on pourrait bien générer selon vous ?
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text" style="margin-bottom: 0;">Documentez vos contrats</h2>
+            <p class="r-fit-text">
+              Ce qui décrit les règles de communication entre deux parties.
+            </p>
+            <div class="fragment fade-up">
+              <p>Les contrats peuvent être :</p>
+              <ul class="r-fit-text">
+                <li>Des scénarios d'utilisation (cucumber/gherkin)</li>
+                <li>Des API (GraphQL, REST, RPC, ...)</li>
+                <li>Des librairies développées pour aider des tiers à s'intégrer/étendre les fonctionnalités de votre application</li>
+                <li>Des composants d'interface graphique utilisateur réutilisables</li>
+              </ul>
+            </div>
+          </section>
+          <section data-background-color="black">
+            <h2>Documentation d'API</h2>
+            <p>
+              <a href="https://swagger.io/">Swagger</a> est un standard de documentation d'API,
+              en particulier <a href="https://swagger.io/resources/open-api/">OpenAPI</a>.
+            </p>
+            <p>
+              Avec Symfony et <a href="https://api-platform.com/">API Platform</a>, vous pouvez générer facilement
+              un fichier OpenAPI à partir de vos annotations de code et donc publier une documentation d'API toujours
+              à jour si vous enrichissez votre pipeline de CI/CD.
+            </p>
+            <aside class="notes">
+              On peut aussi citez GraphQL et son écosystème de documentation, pensé pour être généré à partir du code dès le départ.
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text">Documentation d'API Événementielle</h2>
+            <p>
+              Lorsque vous développez une application basée sur des événements (traitements asynchrones),
+              vous pouvez générer une documentation au format <a href="https://www.asyncapi.com/">AsyncAPI</a>.
+            </p>
+            <p>
+              <a href="https://www.eventcatalog.dev/">EventCatalog</a> est un outil qui permet de présenter cette documentation, et plus.
+            </p>
+            <aside class="notes">
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text">Documentation de composants graphiques</h2>
+            <p>
+              Des outils tels que <a href="https://storybook.js.org/">StoryBook</a> ou <a href="https://backlight.dev/">Backlight</a>
+              permettent de documenter des composants graphiques.
+            </p>
+            <aside class="notes">
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text">Documentation de décisions</h2>
+            <p>
+              Se reposer sur le principe d'<a href="https://github.com/joelparkerhenderson/architecture-decision-record">ADR (Architecture Decision Records)</a>
+              pour documenter les décisions prises et avoir un historique.
+            </p>
+            <aside class="notes">
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text" style="margin-bottom: 0;">Les commentaires dans le code</h2>
+            <p class="r-fit-text">Si le code est clean, les commentaires sont pratiquement inutiles</p>
+            <ul>
+              <li>Pas de paraphase : documenter le type d'une variable d'un langage typé</li>
+              <li>Le strict nécessaire : comme ce n'est pas du code, ils deviennet facilement obsolètes.</li>
+            </ul>
+            <aside class="notes">
+            </aside>
+          </section>
+          <section data-background-color="black">
+            <h2 class="r-fit-text" style="margin-bottom: 0;">Documentation Vivante</h2>
+            <p>Pour aller plus loin</p>
+            <p>
+              <a href="https://youtu.be/Tw-wcps7WqU">Living Documentation : vous allez aimer la documentation ! (Cyrille Martraire)</a>
+            </p>
             <aside class="notes">
             </aside>
           </section>
